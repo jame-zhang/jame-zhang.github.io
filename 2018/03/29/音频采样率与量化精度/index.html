@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="//jame-zhang.github.io">
   <title>音频采样率与量化精度 | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好烦，每次要写博客的文章，都不知道怎么开头，语文从小到大都是弱项，大学之后，表达能力又是指数下降，都不知道该怎么样才能逻辑清晰、简明扼要地表达。  无损音乐跟一般音乐  可能你会说，听个歌用得着那么挑剔吗？不都一样吗？我">
-<meta name="keywords" content="HIFI耳机相关">
+  <meta name="keywords" content="HIFI耳机相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="音频采样率与量化精度">
 <meta property="og:url" content="//jame-zhang.github.io/2018/03/29/音频采样率与量化精度/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
-<meta property="og:description" content="好烦，每次要写博客的文章，都不知道怎么开头，语文从小到大都是弱项，大学之后，表达能力又是指数下降，都不知道该怎么样才能逻辑清晰、简明扼要地表达。  无损音乐跟一般音乐  可能你会说，听个歌用得着那么挑剔吗？不都一样吗？我">
-<meta property="og:updated_time" content="2018-03-29T05:44:30.000Z">
+<meta property="og:image" content="//jame-zhang.github.io/assets/hifi/Hifi-logo.jpg">
+<meta property="og:image" content="//jame-zhang.github.io/assets/hifi/sound-wave.jpg">
+<meta property="og:image" content="//jame-zhang.github.io/assets/hifi/spaker.png">
+<meta property="og:updated_time" content="2018-04-01T05:01:05.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="音频采样率与量化精度">
-<meta name="twitter:description" content="好烦，每次要写博客的文章，都不知道怎么开头，语文从小到大都是弱项，大学之后，表达能力又是指数下降，都不知道该怎么样才能逻辑清晰、简明扼要地表达。  无损音乐跟一般音乐  可能你会说，听个歌用得着那么挑剔吗？不都一样吗？我">
+<meta name="twitter:image" content="//jame-zhang.github.io/assets/hifi/Hifi-logo.jpg">
   
   
     <link rel="icon" href="/assets/img/favicon.jpg">
@@ -48,6 +49,9 @@ ga('send', 'pageview');
   
 
   <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
+<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="/assets/js/Meting.min.js" class="meting-script-marker"></script>
 </head>
 
 <body>
@@ -178,10 +182,39 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>好烦，每次要写博客的文章，都不知道怎么开头，语文从小到大都是弱项，大学之后，表达能力又是指数下降，都不知道该怎么样才能逻辑清晰、简明扼要地表达。</p>
+        <p><img src="/assets/hifi/Hifi-logo.jpg" alt=""></p>
+<a id="more"></a>
+
+    <div id="aplayer-RFNIILSC" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="460298181" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+<h2 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h2><h3 id="无损音乐跟一般音乐"><a href="#无损音乐跟一般音乐" class="headerlink" title="无损音乐跟一般音乐"></a>无损音乐跟一般音乐</h3><p>   可能你会说，听个歌用得着那么挑剔吗？不都一样吗？没听过，你可能真的想象不出来高品质音乐跟一般的音乐的区别。我们都知道计算机是数字存储，也就是只能用0和1来存储处理，所以我们现在听的都是数字音乐。现实生活中的音乐是连续的，而数字音乐就是对连续的音乐进行不断采样，对连续的声波进行切割微分，然后记录保存。采样的频率越高，最终还原的效果也就越好，保真率越高。听无损音乐（高品质）音乐，每种乐器（每个频率：高音、低音、中音）的声音你都能很<code>清楚地辨别出来</code>，有<code>层次感</code>，而一般的音乐你听起来就像是<code>糊在一起一样</code>。</p>
+<h3 id="什么是采样率和量化精度？16bit-44-1kHz、24bit-48kHz、24bit-192kHz-分别代表什么？"><a href="#什么是采样率和量化精度？16bit-44-1kHz、24bit-48kHz、24bit-192kHz-分别代表什么？" class="headerlink" title="什么是采样率和量化精度？16bit/44.1kHz、24bit/48kHz、24bit/192kHz 分别代表什么？"></a>什么是采样率和量化精度？16bit/44.1kHz、24bit/48kHz、24bit/192kHz 分别代表什么？</h3><ul>
+<li><strong>采样率</strong><br> 采样率实际上是指当将声音储存至计算机中，必须经过一个录音转换的过程，转换些什么呢？就是把声音这种模拟信号转成计算机可以辨识的数字信号，在转换过程中将声波的波形以微分方式切开成许多单位，再把每个切开的声波以一个数值来代表该单位的一个量，以此方式完成采样的工作，而在<code>单位时间内切开的数量</code>便是所谓的<code>采样频率</code>，说明白些，就是模拟转数字时每秒对声波采样的数量，像是CD音乐的标准采样频率为44.1KHz(指的就是在1s中对声音采样44100次，也就是对声音1秒的声音记录44100个点，用44100个点来表示1秒钟的声音)，这也是目前声卡与计算机作业间最常用的采样频率。<br> 另外，在单位时间内采样的数量越多就会越接近原始的模拟信号，在将数字信号还原成模拟信号时也就越能接近真实的原始声音；相对的越高的采样率，资料的大小就越大，反之则越小，当然也就越不真实了。数字数据量的大小与声道数、采样率、音质分辨率有着密不可分的关系。<br> 前面提到CD音乐的采样率为44.1KHz，而在计算机上的DVD音效则为48KHz (经声卡转换) ，一般的电台FM广播为32KHz，其它的音效则因不同的应用有不同的采样率，像是以Net Meeting之类的应用就不要使用高的采样率，否则在传递这些声音数据时会是一件十分痛苦的事。当然，目前比较盛行的蓝光的采样率就相当的高，达到了192kHz。而目前的声卡，绝大多数都可以支持44.1kHz、48kHz、96kHz，高端产品可支持192kHz甚至更高。</li>
+<li><p><strong>量化精度</strong><br> 声波在转为数字的过程中不是只有采样率会影响原始声音的完整性，另一个亦具有举足轻重的参数——量化精度，也是相当的重要。一般来说，<code>音质分辨率</code>就是大家常说的bit数。目前，绝大多数的声卡都已经可以支持24bit的量化精度。<br> 那么，什么是量化精度呢？前面曾说明采样频率，它是针对每秒钟所采样的数量，而<code>量化精度</code>则是对于声波的<code>振幅</code>进行<code>切割</code>，形成类似阶梯的度量单位。所以，如果说采样频率是对声波水平进行的X轴切割，那么量化精度则是对Y轴的切割，切割的数量是以最大振幅切成2的n次方计算，n就是bit数。<br> 举个例子，如果是8bit，那么在振幅方面的采样就有256阶，若是16bit，则振幅的计量单位便会成为65536阶，<code>越多的阶数就越能精确描述每个采样的振幅高度</code>。如此，也就越接近原始声波的“能量”，在还原的过程序也就越接近原始的声音了。<br> 另外，bit的数目还决定了声波振幅的范围（即动态范围，最大音量与最小音量的差距）。如果这个位数越大，则能够表示的数值越大，描述波形更精确。每<code>一个Bit</code>的数据可以记录约<code>等于6dB</code>动态的信号。一般来说，16Bit可以提供最大96dB的动态范围（加高频颤动后只有92dB）。每增加一个Bit的量化精度，这个值就增加6dB。因此，我们可以推断出<code>20Bit</code>可以达到<code>120dB</code>的动态范围，而<code>24Bit</code>则可以提供高达<code>144dB</code>的动态范围。<br> 那么，动态范围大了，会有什么好处呢？<code>动态范围</code>是指系统的<code>输出噪音功率</code>和<code>最大不失真音量功率</code>的比值，这个值越大，则系统可以承受很高的动态。比如1812序曲中的炮声，如果系统动态过小，高于动态范围的信号将被削波（Clipping, 高于0dB的溢出信号将被砍掉，会导致噼里啪啦的声音）。<br> 16bit/44.1kHz、24bit/48kHz、24bit/192kHz这三种采样，16bit/44.1kHz是CD中音频的采样、24bit/48kHz是DVD中音频的采样（区分：不是DVD Audio），而24bit/192kHz是蓝光中音频的采样。</p>
+<p><img src="/assets/hifi/sound-wave.jpg" alt=""></p>
+</li>
+</ul>
+<h3 id="比特率"><a href="#比特率" class="headerlink" title="比特率"></a>比特率</h3><p>   音质有时候也会用比特率表示，比特率(bits per second, <code>bps</code>)也叫码率，从英文的定义可以很清楚地知道，比特率指的就是每秒钟的位数（也叫比特数），比特是计算机的一个存储计量单位，就像是米、克等这样的常见单位，一个比特（位）就是 2<sup>1</sup>，能够表示 0 或 1，1字节(Byte) = 8 比特(bit), 1KB = 1028 Byte, 1MB = 1024 KB，1GB = 1024 MB，1TB = 1024 GB，1PB =1024 TB ······ ，根据比特率我们就可以算出音乐的存储大小，比如一首比特率为256kbps，4分钟的歌曲的存储大小为：(256 / 8) <em> 4 </em> 60 =7680 KB=7.68 MB,所以这首歌曲在计算机里的存储大小就是7.68 MB，如果是多通道的，则需要乘以通道数。</p>
+<h3 id="声道"><a href="#声道" class="headerlink" title="声道"></a>声道</h3><p>   声音的通道的数目。常见的单声道和立体声（双声道），现在发展到了四声环绕（四声道）和5.1声道。<br>   耳机听立体声音乐，就会有左右声道的效果，知道音乐是在左边还是右边，类似于人眼的3D效果，左右配合起来才会有3D效果。 </p>
+<h2 id="耳机"><a href="#耳机" class="headerlink" title="耳机"></a>耳机</h2><h3 id="耳机的参数"><a href="#耳机的参数" class="headerlink" title="耳机的参数"></a>耳机的参数</h3><blockquote>
+<p>耳机参数只是一个参考指标，耳机的好坏跟参数有关，但是不是绝对相关。耳机的好坏还是要以适合自己的为准。</p>
 </blockquote>
-<h2 id="无损音乐跟一般音乐"><a href="#无损音乐跟一般音乐" class="headerlink" title="无损音乐跟一般音乐"></a>无损音乐跟一般音乐</h2><p>  可能你会说，听个歌用得着那么挑剔吗？不都一样吗？我</p>
+<p>   俗话说“好马配好鞍”，有了高品质的音乐，自然得有一副好的耳机才能体验到细腻的聆听效果，比较讲究的话，还得要一个专门的播放器，专门的播放器利用硬件对音乐进行解码，一般电脑都是使用系统软件进行解码，不过有了好的音乐和好的耳机，已经感觉到区别了。<br>   参见的耳机参数有：</p>
+<ul>
+<li>阻抗</li>
+<li>灵敏度</li>
+<li><p>频响范围  </p>
+<p> <strong>阻抗</strong>: 耳机是缩小版的扬声器，扬声器是利用电磁感应原理，使得振膜振动发声，电流通过导线，就会存在电阻，所以阻抗指的就是驱动耳机所存在的电阻，阻抗越大，耳机越不容易驱动，一般60欧姆以下的耳机，常见的手机可以直接推，<code>大阻抗</code>的耳机就需要<code>功率放大器</code>了。如果使用低阻耳机，一定先要把音量调低再插上耳机，再一点点把音量调上去，阻止耳机过载将耳机烧坏或是音圈变形错位造成破音，低阻抗的耳机一般比较容易推动，因此随身听、播放器等便携、省电的机器应选择低阻抗耳机，同时还要注意灵敏度要高。</p>
+<p> <strong>灵敏度</strong>: 耳机灵敏度指的是指向耳机输入1毫瓦的功率时耳机所能发出的声压级（声压的单位是分贝，声压越大音量越大），所以一般灵敏度越高、阻抗越小，耳机越容易出声、越容易驱动，灵敏度可以简单地认为特定功率下的响度大小。</p>
+<p> <strong>频率响应</strong>: 也叫频响，指的就是耳机所能播放的声音的频率范围。实际上，人耳所能听到的声音的范围是有限的，人耳能感受到的振动频率范围约为20-20000赫兹。随着年龄的增长，听觉上限会降低，强度范围为0.0002-1000 dyn/cm²（来自维基百科）。频响越大，声音层次感也越强。   </p>
+</li>
+</ul>
+<h3 id="耳机类型"><a href="#耳机类型" class="headerlink" title="耳机类型"></a>耳机类型</h3><p>   不同的分类方法对应的耳机分类也是不一样的，这里主要讲的是根据耳机的发声结构的分类，耳机就是一对扬声器，传统的扬声器（我们常说的喇叭）一般是变化的电流流过线圈（下图中的6），线圈产生磁场，跟磁铁（下图中的5）异性相吸，同性相斥，带动振膜(下图中的2)振动发声，如果是线圈（下图中的6）振动，我们称作<code>动圈</code>，如果是磁铁（下图中的5）振动，我们称作是<code>动铁</code>。有多个单元的耳机就是有多个扬声器的耳机，单元越多，一般耳机的价格也越贵。动铁比较适合听电子乐、摇滚乐等，这些要求声音频率变化较快且变化较多的音乐，而动圈比较适合听古典乐。<br> <img src="/assets/hifi/spaker.png" alt=""><br>   还有一种分类方式就是根据佩戴的方法进行分类，可以分为<code>入耳式耳机</code>、<code>耳塞式</code>、<code>头戴式</code>等，我比较喜欢的是<code>入耳式</code>的耳机，隔音效果好，能够不被别人打扰，沉浸在自己的音乐里面，不过入耳式耳机也有缺点，就是听诊器效果严重，稍微碰一下耳机线，耳机听得很清楚，长时间使用入耳式耳机，对耳朵损害也比较严重。</p>
+<h3 id="常见的耳机品牌"><a href="#常见的耳机品牌" class="headerlink" title="常见的耳机品牌"></a>常见的耳机品牌</h3><p>   其实狗东或者天猫查询下HIFI耳机，然后排序下，就能知道常见的耳机都有哪些了，我了解的耳机有森海塞尔、索尼、舒尔、AKG、威士顿等，如果让我推荐的话，我还是会说“索尼大法好呀”，自己用的是几年前的xba-a2，动圈结合，2个动铁，听电子乐最适合不过了。同价位的森海塞尔耳机跟xba-a2或者a3相比，感觉森海塞尔低音感严重丢失。</p>
+<p>参考： </p>
+<ol>
+<li><a href="https://blog.csdn.net/caoshangpa/article/details/51218597" target="_blank" rel="noopener">CSDN博客</a></li>
+<li><a href="http://www.sonic-pro.com/technology/article/2014_1106_448.html" target="_blank" rel="noopener">介绍</a> </li>
+</ol>
 
       
 
@@ -453,10 +486,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具-Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
@@ -470,6 +499,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工具-Docker</a>
               </li>
              
               <li class="article-tag-list-item">
