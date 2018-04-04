@@ -242,6 +242,162 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-Ubuntu源更新" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/04/Ubuntu源更新/">Ubuntu源更新</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/04/Ubuntu源更新/" class="archive-article-date">
+  	<time datetime="2018-04-04T03:00:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近实验室一台浪潮NF5270M3的机子需要重新配置环境</p>
+</blockquote>
+<p>查看系统信息的命令:  </p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -<span class="keyword">a</span></span><br><span class="line">lsb_release -<span class="keyword">a</span></span><br></pre></td></tr></table></figure>
+<p>系统输出如下：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@fbi</span>-<span class="symbol">NF5270M3:</span>~<span class="regexp">/Jame/linux</span>_amd64<span class="comment"># uname -a</span></span><br><span class="line">Linux fbi-NF5270M3 <span class="number">4.8</span>.<span class="number">0</span>-<span class="number">59</span>-generic <span class="comment">#64-Ubuntu SMP Thu Jun 29 19:38:34 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span></span><br><span class="line">root<span class="variable">@fbi</span>-<span class="symbol">NF5270M3:</span>~<span class="regexp">/Jame/linux</span>_amd64<span class="comment"># lsb_release -a</span></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor <span class="symbol">ID:</span>	Ubuntu</span><br><span class="line"><span class="symbol">Description:</span>	Ubuntu <span class="number">16.10</span></span><br><span class="line"><span class="symbol">Release:</span>	<span class="number">16.10</span></span><br><span class="line"><span class="symbol">Codename:</span>	yakkety</span><br></pre></td></tr></table></figure>
+<p>Linux系统的配置文件都在/etc下，ubuntu使用的是apt包管理</p>
+<ul>
+<li><strong>备份原来的软件源</strong>：<br><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code>  </li>
+<li><strong>编辑源列表文件(可用vi、nano或者其他文档编辑器)</strong>:<br><code>sudo nano /etc/apt/sources.list</code></li>
+<li>删除文本里的内容，添加新的源地址：  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-security main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-updates main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-proposed main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-backports main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-security main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-updates main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-proposed main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>　　以上的配置中，前面的http地址代表的是源的地址，可以根据自己需要自行更换，有阿里云、中科大、网易(mirrors.163.com)等镜像源地址，需要不同的镜像地址，百度搜索一下就可以了，表明版本的就是关键字“Codename”，这是Ubuntu表示版本的一种形式(Ubuntu称其为Codename)，它即对应了一个发行版。版本号和Codename的对应关系如下表。这里只需要将上面的Codename字符串替换为下文中具体的Codename即可。<br><strong>版本号    Codename</strong><br>11.04:  natty<br>11.10:  oneiric<br>12.04:  precise<br>12.10:  quantal<br>13.04:  raring<br>13.10:  saucy<br>14.04:  trusty<br>14.10:  utopic<br>15.04:  vivid<br>15.10:  wily<br>16.04:  xenial<br>16.10:  yakkety<br>……<br>　　更改完以后输入<code>apt-get update</code>更新下<br>　　<br><strong>参考：</strong></p>
+<ol>
+<li><a href="https://blog.csdn.net/zgljl2012/article/details/79065174" target="_blank" rel="noopener">CSDN博客</a></li>
+<li><a href="https://www.linuxidc.com/Linux/2017-03/141589.htm" target="_blank" rel="noopener">Linux公社</a><br>附：<br><a href="https://www.linuxidc.com/Linux/2016-12/138289.htm" target="_blank" rel="noopener">开源软件系统官方源、镜像源Open Source 汇总</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具-Ubuntu</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/04/Ubuntu源更新/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
+    <article id="post-Mac上的无损音乐播放器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/02/Mac上的无损音乐播放器/">Mac上的无损音乐播放器</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/02/Mac上的无损音乐播放器/" class="archive-article-date">
+  	<time datetime="2018-04-02T12:33:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/02/Mac上的无损音乐播放器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-Golang指针与JSON" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -643,163 +799,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Hexo插入音乐播放器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/18/Hexo插入音乐播放器/">Hexo插入音乐播放器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/18/Hexo插入音乐播放器/" class="archive-article-date">
-  	<time datetime="2018-03-18T04:52:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>博客搭完，总想着继续优化，所以SEO还没弄，就觉得插入背景音乐得提前配置好，不然多单调，生活不能缺少音乐。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/03/18/Hexo插入音乐播放器/#more">More >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hexo博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/18/Hexo插入音乐播放器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-Raspberry-Pi-3玩机日志" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/15/Raspberry-Pi-3玩机日志/">Raspberry Pi 3玩机日志</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/15/Raspberry-Pi-3玩机日志/" class="archive-article-date">
-  	<time datetime="2018-03-15T09:22:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近弄了一批树莓派，需要刷系统和配置，先上几张图，如下：  </p>
-<p><img src="/assets/Raspberry-Pi-3玩机日志/F1.jpg" alt=""><br>
-        
-          <a class="article-more-a" href="/2018/03/15/Raspberry-Pi-3玩机日志/#more">More >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">硬件学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/15/Raspberry-Pi-3玩机日志/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -900,15 +899,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -917,6 +916,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
