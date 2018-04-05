@@ -23,7 +23,7 @@
 <meta property="og:image" content="//jame-zhang.github.io/assets/Docker介绍/dockerPull.png">
 <meta property="og:image" content="//jame-zhang.github.io/assets/Docker介绍/dockerImages.png">
 <meta property="og:image" content="//jame-zhang.github.io/assets/Docker介绍/dockerRun.png">
-<meta property="og:updated_time" content="2018-03-23T11:50:29.000Z">
+<meta property="og:updated_time" content="2018-04-05T09:03:39.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker介绍">
 <meta name="twitter:description" content="什么是Docker? 去年实习的时候，接触到Docker，过后也一直用，间隔了一段时间后，发现有些都给忘了。     Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。而且Docker的操作命令跟Git命令类似。">
@@ -199,7 +199,7 @@ ga('send', 'pageview');
 <p><a href="https://www.docker.com" target="_blank" rel="noopener">Docker官网</a>、<a href="https://baike.baidu.com/item/Docker/13344470?fr=aladdin" target="_blank" rel="noopener">百度百科-Docker</a></p>
 </blockquote>
 
-    <div id="aplayer-jwaJSlme" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="493705537" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-BLWNTCOB" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="493705537" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 <h2 id="Docker的用处"><a href="#Docker的用处" class="headerlink" title="Docker的用处"></a>Docker的用处</h2><p>  Docker其实就是一个虚拟化的容器，而且可以打包对应的环境和数据，比如你部署的某个服务器，包括<strong>各种各样的依赖环境和工具</strong>，有Git，MySql或MongoDB，nginx或者Caddy，Python3.5，OpenCV或者PIL等等，而且你也需要<strong>批量部署或者复制环境</strong>，比如需要把你的环境从A服务器迁移到B服务器，这个时候自己手动的去安装所有的环境会特别繁琐，但是如果使用Docker的话，只需要安装Docker程序，然后pull一下自己的Docker镜像，然后运行。</p>
 <ul>
 <li>安装Docker</li>
@@ -209,6 +209,11 @@ ga('send', 'pageview');
 <p><img src="/assets/Docker介绍/docker2.png" alt=""></p>
 <p>  就像上图的右边部分，在底层(Kernel)之上，可以有很多容器(Container)，每个容器都安装了不同的环境和软件，复制了容器就相当于复制所有的环境和软件，环境复制和部署极为方便。</p>
 <h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>   安装教程请移步<a href="https://docs.docker.com/install/" target="_blank" rel="noopener">官网</a><br>   <strong>注意</strong>：Docker版本分为社区版<code>Docker CE</code>和企业版<code>Docker EE</code>，个人安装的时候请选择CE版，CE版还分为稳定吧和测试版。</p>
+<h3 id="验证Docker安装是否成功"><a href="#验证Docker安装是否成功" class="headerlink" title="验证Docker安装是否成功"></a>验证Docker安装是否成功</h3><p>运行命令:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker -v  <span class="comment">#查看安装的docker的版本</span></span><br><span class="line">docker -h  <span class="comment">#查看帮助</span></span><br><span class="line">docker <span class="built_in">version</span>  <span class="comment">#查看docker客户端和服务器版本情况</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong><br>　　如果运行<code>docker version</code>的时候提示:<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Client</span>:</span><br><span class="line"> <span class="attribute">Version</span>:      <span class="number">17.09</span>.<span class="number">1</span>-ce</span><br><span class="line"> API <span class="attribute">version</span>:  <span class="number">1.32</span></span><br><span class="line"> Go <span class="attribute">version</span>:   go1.<span class="number">8.3</span></span><br><span class="line"> Git <span class="attribute">commit</span>:   <span class="number">19</span>e2cf6</span><br><span class="line"> <span class="attribute">Built</span>:        Thu Dec  <span class="number">7</span> <span class="number">22</span>:<span class="number">23</span>:<span class="number">40</span> <span class="number">2017</span></span><br><span class="line"> OS/<span class="attribute">Arch</span>:      linux/amd64</span><br><span class="line">Cannot connect to the Docker daemon at <span class="attribute">unix</span>:<span class="comment">///var/run/docker.sock. Is the docker daemon running?</span></span><br></pre></td></tr></table></figure></p>
+<p>说明docker服务还没开启，开启docker服务（不同系统软件运行命令可能不一样）：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> docker  <span class="comment">#我用的是centos7的系统</span></span><br></pre></td></tr></table></figure></p>
+<p>重新运行<code>docker version</code>后，发现一切正常。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Client</span>:</span><br><span class="line"> <span class="attribute">Version</span>:      <span class="number">17.09</span>.<span class="number">1</span>-ce</span><br><span class="line"> API <span class="attribute">version</span>:  <span class="number">1.32</span></span><br><span class="line"> Go <span class="attribute">version</span>:   go1.<span class="number">8.3</span></span><br><span class="line"> Git <span class="attribute">commit</span>:   <span class="number">19</span>e2cf6</span><br><span class="line"> <span class="attribute">Built</span>:        Thu Dec  <span class="number">7</span> <span class="number">22</span>:<span class="number">23</span>:<span class="number">40</span> <span class="number">2017</span></span><br><span class="line"> OS/<span class="attribute">Arch</span>:      linux/amd64</span><br><span class="line"></span><br><span class="line"><span class="attribute">Server</span>:</span><br><span class="line"> <span class="attribute">Version</span>:      <span class="number">17.09</span>.<span class="number">1</span>-ce</span><br><span class="line"> API <span class="attribute">version</span>:  <span class="number">1.32</span> (minimum version <span class="number">1.12</span>)</span><br><span class="line"> Go <span class="attribute">version</span>:   go1.<span class="number">8.3</span></span><br><span class="line"> Git <span class="attribute">commit</span>:   <span class="number">19</span>e2cf6</span><br><span class="line"> <span class="attribute">Built</span>:        Thu Dec  <span class="number">7</span> <span class="number">22</span>:<span class="number">25</span>:<span class="number">03</span> <span class="number">2017</span></span><br><span class="line"> OS/<span class="attribute">Arch</span>:      linux/amd64</span><br><span class="line"> <span class="attribute">Experimental</span>: false</span><br></pre></td></tr></table></figure>
 <h2 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h2><blockquote>
 <p>参考书籍：<a href="http://product.dangdang.com/24194119.html" target="_blank" rel="noopener">Docker技术入门与实战</a></p>
 </blockquote>
@@ -543,7 +548,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,6 +557,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">

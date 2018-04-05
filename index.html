@@ -242,6 +242,117 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-ngrok服务器搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/05/ngrok服务器搭建/">ngrok服务器搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/05/ngrok服务器搭建/" class="archive-article-date">
+  	<time datetime="2018-04-05T08:26:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题，后面再解决</p>
+</blockquote>
+<p>　　如何搭建自己的ngrok服务器，详细可以看github上的<a href="https://github.com/inconshreveable/ngrok" target="_blank" rel="noopener">ngrok</a>项目里的doc文件夹里面的文档和README文件：  </p>
+<ol>
+<li>配置好环境，git,go(基于1.42的基础上的)</li>
+<li>按照步骤配置</li>
+</ol>
+<ul>
+<li><p><strong>下载ngrok源码</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/inconshreveable/ngrok.git</span><br><span class="line"><span class="built_in">export</span> GOPATH=/usr/<span class="built_in">local</span>/ngrok/</span><br><span class="line"><span class="built_in">export</span> NGROK_DOMAIN=<span class="string">"example.com"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>生成证书</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ngrok <span class="comment">#进入源码的文件夹里面</span></span><br><span class="line">openssl genrsa -out rootCA.key 2048</span><br><span class="line">openssl req -x509 -new -nodes -key rootCA.key -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -days 5000 -out rootCA.pem</span><br><span class="line">openssl genrsa -out server.key 2048</span><br><span class="line">openssl req -new -key server.key -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -out server.csr</span><br><span class="line">openssl x509 -req -<span class="keyword">in</span> server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out server.crt -days 5000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置自己的证书到项目里面</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp rootCA.pem assets/client/tls/ngrokroot.crt</span><br><span class="line">cp server.crt assets/server/tls/snakeoil.crt</span><br><span class="line">cp server.key assets/server/tls/snakeoil.key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>指定编译环境变量，如何确认GOOS和GOARCH，可以通过go env来查看</strong><br>编译服务端：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/go/src</span><br><span class="line">GOOS=linux GOARCH=386 ./make.bash</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/ngrok/</span><br><span class="line">GOOS=linux GOARCH=amd64 make release-server</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>编译mac客户端：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/go/src   #这步很重要，需要先编译，再生成，否者报错</span><br><span class="line"><span class="attribute">GOOS</span>=darwin <span class="attribute">GOARCH</span>=amd64 ./make.bash</span><br><span class="line">cd /usr/local/ngrok/</span><br><span class="line"><span class="attribute">GOOS</span>=darwin <span class="attribute">GOARCH</span>=amd64 make release-client</span><br></pre></td></tr></table></figure></p>
+<p>编译windows客户端：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/go/src   #这步很重要，需要先编译，再生成，否者报错</span><br><span class="line"><span class="attribute">GOOS</span>=windows <span class="attribute">GOARCH</span>=amd64 ./make.bash</span><br><span class="line">cd /usr/local/ngrok/</span><br><span class="line"><span class="attribute">GOOS</span>=windows <span class="attribute">GOARCH</span>=amd64 make release-client</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>客户端配置文件</strong><br>文件名:ngrok.cfg  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">server_addr:</span> <span class="string">"example.com:4443"</span></span><br><span class="line"><span class="string">trust_host_root_certs:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>服务端启动</strong>  </p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/ngrok/bin/ngrokd <span class="attribute">-domain</span>=<span class="string">"<span class="variable">$NGROK_DOMAIN</span>"</span> <span class="attribute">-httpAddr</span>=<span class="string">":80"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>客户端启动</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ngrok <span class="attribute">-config</span>=./ngrok.cfg <span class="attribute">-subdomain</span>=blog 80</span><br><span class="line">setsid ./ngrok <span class="attribute">-config</span>=./ngrok.cfg <span class="attribute">-subdomain</span>=test 80 #在linux下如果想后台运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">工具-ngrok</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/05/ngrok服务器搭建/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-Ubuntu系统安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -706,87 +817,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Docker介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/23/Docker介绍/">Docker介绍</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/23/Docker介绍/" class="archive-article-date">
-  	<time datetime="2018-03-23T02:13:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker?"></a>什么是Docker?</h2><blockquote>
-<p>去年实习的时候，接触到Docker，过后也一直用，间隔了一段时间后，发现有些都给忘了。</p>
-</blockquote>
-<p><img src="/assets/Docker介绍/docker.png" alt=""></p>
-<p>  Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。而且Docker的操作命令跟Git命令类似。<br>
-        
-          <a class="article-more-a" href="/2018/03/23/Docker介绍/#more">More >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具-Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/23/Docker介绍/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -899,7 +929,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,6 +938,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
