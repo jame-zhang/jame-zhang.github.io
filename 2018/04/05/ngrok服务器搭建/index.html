@@ -15,7 +15,7 @@
 <meta property="og:url" content="//jame-zhang.github.io/2018/04/05/ngrok服务器搭建/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口  　　如何搭建自己的ngrok服务器，详细可以看github上的ngrok项目里的doc文件夹里面的文档和">
-<meta property="og:updated_time" content="2018-04-06T02:26:31.291Z">
+<meta property="og:updated_time" content="2018-04-06T02:38:11.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngrok服务器搭建">
 <meta name="twitter:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口  　　如何搭建自己的ngrok服务器，详细可以看github上的ngrok项目里的doc文件夹里面的文档和">
@@ -215,6 +215,10 @@ ga('send', 'pageview');
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/ngrok <span class="attribute">-config</span>=./ngrok.cfg <span class="attribute">-subdomain</span>=blog 80</span><br><span class="line">setsid ./ngrok <span class="attribute">-config</span>=./ngrok.cfg <span class="attribute">-subdomain</span>=test 80 #在linux下如果想后台运行</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h3 id="几点注意事项"><a href="#几点注意事项" class="headerlink" title="几点注意事项"></a>几点注意事项</h3><ol>
+<li>为了避免防火墙问题导致转发失败，推荐直接用关闭防火墙的vps进行测试和布置，在你测试成功后再更改对应的端口；</li>
+<li>某位大神跟我说ngrok有内存泄露问题，不会回收释放内存，实际情况还没有验证，所以推荐使用frp。</li>
+</ol>
 
       
 
@@ -376,7 +380,7 @@ ga('send', 'pageview');
        if (typeof LivereTower === 'function') { return; }
 
        j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.src = '/assets/js/embed.dist.js';
        j.async = true;
 
        e.parentNode.insertBefore(j, e);
@@ -498,10 +502,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
@@ -510,15 +510,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
               </li>
              
               <li class="article-tag-list-item">
