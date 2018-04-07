@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/04/Ubuntu源更新/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="最近实验室一台浪潮NF5270M3的机子需要重新配置环境  查看系统信息的命令:   12uname -alsb_release -a">
-<meta property="og:updated_time" content="2018-04-04T03:22:37.901Z">
+<meta property="og:updated_time" content="2018-04-06T06:25:06.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu源更新">
 <meta name="twitter:description" content="最近实验室一台浪潮NF5270M3的机子需要重新配置环境  查看系统信息的命令:   12uname -alsb_release -a">
@@ -193,7 +193,10 @@ ga('send', 'pageview');
 <li>删除文本里的内容，添加新的源地址：  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-security main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-updates main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-proposed main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-backports main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-security main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-updates main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-proposed main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.<span class="number">163</span>.com<span class="regexp">/ubuntu/</span> Codename-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>　　以上的配置中，前面的http地址代表的是源的地址，可以根据自己需要自行更换，有阿里云、中科大、网易(mirrors.163.com)等镜像源地址，需要不同的镜像地址，百度搜索一下就可以了，表明版本的就是关键字“Codename”，这是Ubuntu表示版本的一种形式(Ubuntu称其为Codename)，它即对应了一个发行版。版本号和Codename的对应关系如下表。这里只需要将上面的Codename字符串替换为下文中具体的Codename即可。<br><strong>版本号    Codename</strong><br>11.04:  natty<br>11.10:  oneiric<br>12.04:  precise<br>12.10:  quantal<br>13.04:  raring<br>13.10:  saucy<br>14.04:  trusty<br>14.10:  utopic<br>15.04:  vivid<br>15.10:  wily<br>16.04:  xenial<br>16.10:  yakkety<br>……<br>　　更改完以后输入<code>apt-get update</code>更新下<br>　　<br><strong>参考：</strong></p>
+<p>　　以上的配置中，前面的http地址代表的是源的地址，可以根据自己需要自行更换，有阿里云、中科大、网易(mirrors.163.com)等镜像源地址，需要不同的镜像地址，百度搜索一下就可以了，表明版本的就是关键字“Codename”，这是Ubuntu表示版本的一种形式(Ubuntu称其为Codename)，它即对应了一个发行版。版本号和Codename的对应关系如下表。这里只需要将上面的Codename字符串替换为下文中具体的Codename即可。<br><strong>版本号    Codename</strong><br>11.04:  natty<br>11.10:  oneiric<br>12.04:  precise<br>12.10:  quantal<br>13.04:  raring<br>13.10:  saucy<br>14.04:  trusty<br>14.10:  utopic<br>15.04:  vivid<br>15.10:  wily<br>16.04:  xenial<br>16.10:  yakkety<br>……<br>　　更改完以后输入<code>apt-get update</code>更新下
+　</p>
+<h2 id="更新是卡住的解决办法"><a href="#更新是卡住的解决办法" class="headerlink" title="更新是卡住的解决办法"></a>更新是卡住的解决办法</h2><p>使用<code>apt-get update</code>，然后卡住，把源更新成阿里云的源就可以了，先备份，然后更改文件里的地址</p>
+<p><strong>参考：</strong></p>
 <ol>
 <li><a href="https://blog.csdn.net/zgljl2012/article/details/79065174" target="_blank" rel="noopener">CSDN博客</a></li>
 <li><a href="https://www.linuxidc.com/Linux/2017-03/141589.htm" target="_blank" rel="noopener">Linux公社</a><br>附：<br><a href="https://www.linuxidc.com/Linux/2016-12/138289.htm" target="_blank" rel="noopener">开源软件系统官方源、镜像源Open Source 汇总</a></li>
@@ -481,15 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,6 +497,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">

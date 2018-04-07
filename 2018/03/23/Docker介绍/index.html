@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://www.jame-zhang.top/assets/Docker介绍/dockerPull.png">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/Docker介绍/dockerImages.png">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/Docker介绍/dockerRun.png">
-<meta property="og:updated_time" content="2018-04-05T09:03:39.533Z">
+<meta property="og:updated_time" content="2018-04-07T02:22:32.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker介绍">
 <meta name="twitter:description" content="什么是Docker? 去年实习的时候，接触到Docker，过后也一直用，间隔了一段时间后，发现有些都给忘了。     Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。而且Docker的操作命令跟Git命令类似。">
@@ -199,7 +199,7 @@ ga('send', 'pageview');
 <p><a href="https://www.docker.com" target="_blank" rel="noopener">Docker官网</a>、<a href="https://baike.baidu.com/item/Docker/13344470?fr=aladdin" target="_blank" rel="noopener">百度百科-Docker</a></p>
 </blockquote>
 
-    <div id="aplayer-kOnBdrPQ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="493705537" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-KrnqnWSz" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="493705537" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 <h2 id="Docker的用处"><a href="#Docker的用处" class="headerlink" title="Docker的用处"></a>Docker的用处</h2><p>  Docker其实就是一个虚拟化的容器，而且可以打包对应的环境和数据，比如你部署的某个服务器，包括<strong>各种各样的依赖环境和工具</strong>，有Git，MySql或MongoDB，nginx或者Caddy，Python3.5，OpenCV或者PIL等等，而且你也需要<strong>批量部署或者复制环境</strong>，比如需要把你的环境从A服务器迁移到B服务器，这个时候自己手动的去安装所有的环境会特别繁琐，但是如果使用Docker的话，只需要安装Docker程序，然后pull一下自己的Docker镜像，然后运行。</p>
 <ul>
 <li>安装Docker</li>
@@ -243,10 +243,20 @@ ga('send', 'pageview');
 <p>或者在<a href="https://hub.docker.com/explore/" target="_blank" rel="noopener">DockerHub</a>上查找镜像：</p>
 <p><img src="/assets/Docker介绍/dockerhub.png" alt=""></p>
 <ul>
-<li>下载镜像<br>docker pull 用户名(username)/镜像名(image name):镜像标签(tag)</li>
+<li>下载镜像<br>docker pull 用户名(username)/镜像名(image name):镜像标签(tag)<ul>
+<li>其中 用户名/镜像名是镜像仓库的名称（用来区分镜像），tag是镜像的标签（往往用来显示版本信息），通常情况下，描述一个镜像需要包括“名称+标签的信息”，如果省略标签信息，默认的是:latest</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull greyltc/<span class="string">lamp:</span>latest</span><br></pre></td></tr></table></figure>
 <p><img src="/assets/Docker介绍/dockerPull.png" alt=""></p>
+<ul>
+<li>下载过程中可以看出，镜像文件一般由若干层（layer）组成，上图中a3ed95caeb02这样的串是层的唯一id（256位的哈希值，确保唯一性），使用docker pull命令下载时会获取并输出镜像各层的信息。当不同的镜像包括相同的层是，本地仅存储层的一份内容，减少了需要的存储空间。</li>
+<li>严格地讲，镜像的仓库名称中还应该添加仓库地址(即reigstry, 注册服务器)作为前缀，只是我们默认使用的是Docker Hub服务，该前缀可以省略。</li>
+</ul>
+<blockquote>
+<p>例如，<code>docker pull ubuntu:14.04</code> 命令相当于<br><code>docker pull registry.hub.com/ubuntu:14.04</code> 命令，即从默认的注册服务器Docker Hub Registry中的ubuntu仓库下载标签为14.04的镜像。</p>
+</blockquote>
 <ul>
 <li>查看镜像<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker images</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -544,15 +554,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,6 +567,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
