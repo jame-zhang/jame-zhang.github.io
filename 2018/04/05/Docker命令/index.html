@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/05/Docker命令/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="Docker常用命令介绍，持续更新了解命令的详细情况可以用 man docker 具体命令，如：man docker images查看介绍，跟官方文档一致。   更新截止时间：2018-04-07  Docker镜像操作 查看镜像（-a参数显示所有镜像，包括临时）   1docker images  下载镜像 1docker pull #eg:docker pull repository/ima">
-<meta property="og:updated_time" content="2018-04-07T02:49:27.392Z">
+<meta property="og:updated_time" content="2018-04-08T11:37:08.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker命令">
 <meta name="twitter:description" content="Docker常用命令介绍，持续更新了解命令的详细情况可以用 man docker 具体命令，如：man docker images查看介绍，跟官方文档一致。   更新截止时间：2018-04-07  Docker镜像操作 查看镜像（-a参数显示所有镜像，包括临时）   1docker images  下载镜像 1docker pull #eg:docker pull repository/ima">
@@ -193,6 +193,7 @@ ga('send', 'pageview');
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">tag</span> <span class="title">ubuntu</span>:latest mybuntu:latest</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<a id="more"></a>
 <p>再次使用<code>docker images</code>查看镜像，可以看到多了一个拥有mybuntu:latest标签的镜像，之后就可以直接使用myubuntu:latest 来表示这个镜像了，myubuntu:latest的id跟ubuntu:latest是一致的，因为他们是同一个镜像文件，只是别名不同而已，docker tag 命令添加的标签实际上起到了类似链接的作用。</p>
 <h3 id="使用inspect-命令查看详细信息"><a href="#使用inspect-命令查看详细信息" class="headerlink" title="使用inspect 命令查看详细信息"></a>使用inspect 命令查看详细信息</h3><p>使用<code>docker inspect</code>可以获取该镜像的详细信息，包括制作者、适应框架、各层的数字摘要等<br><code>docker inspect ubuntu:latest</code><br>返回的是json格式的消息，如果只需要其中某项内容是，可以用<code>-f</code>参数，如<br><code>docker inspect -f.Architecture</code></p>
 <h3 id="使用history-命令查看镜像历史"><a href="#使用history-命令查看镜像历史" class="headerlink" title="使用history 命令查看镜像历史"></a>使用history 命令查看镜像历史</h3><p>使用history查看镜像每个层的具体内容，如：<br><code>docker history ubuntu:latest</code><br><strong>可以添加 –no-trunc=true 参数来查看完整内容</strong></p>
@@ -480,6 +481,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-软件推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
@@ -492,6 +497,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
               </li>
              
@@ -501,10 +510,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
