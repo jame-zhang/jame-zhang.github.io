@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://www.jame-zhang.top/assets/Docker介绍/dockerPull.png">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/Docker介绍/dockerImages.png">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/Docker介绍/dockerRun.png">
-<meta property="og:updated_time" content="2018-04-07T02:22:32.978Z">
+<meta property="og:updated_time" content="2018-04-08T11:34:19.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker介绍">
 <meta name="twitter:description" content="什么是Docker? 去年实习的时候，接触到Docker，过后也一直用，间隔了一段时间后，发现有些都给忘了。     Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。而且Docker的操作命令跟Git命令类似。">
@@ -199,7 +199,7 @@ ga('send', 'pageview');
 <p><a href="https://www.docker.com" target="_blank" rel="noopener">Docker官网</a>、<a href="https://baike.baidu.com/item/Docker/13344470?fr=aladdin" target="_blank" rel="noopener">百度百科-Docker</a></p>
 </blockquote>
 
-    <div id="aplayer-RnZUTOTu" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="493705537" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-pHzxHQCl" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="493705537" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 <h2 id="Docker的用处"><a href="#Docker的用处" class="headerlink" title="Docker的用处"></a>Docker的用处</h2><p>  Docker其实就是一个虚拟化的容器，而且可以打包对应的环境和数据，比如你部署的某个服务器，包括<strong>各种各样的依赖环境和工具</strong>，有Git，MySql或MongoDB，nginx或者Caddy，Python3.5，OpenCV或者PIL等等，而且你也需要<strong>批量部署或者复制环境</strong>，比如需要把你的环境从A服务器迁移到B服务器，这个时候自己手动的去安装所有的环境会特别繁琐，但是如果使用Docker的话，只需要安装Docker程序，然后pull一下自己的Docker镜像，然后运行。</p>
 <ul>
 <li>安装Docker</li>
@@ -257,6 +257,13 @@ ga('send', 'pageview');
 <blockquote>
 <p>例如，<code>docker pull ubuntu:14.04</code> 命令相当于<br><code>docker pull registry.hub.com/ubuntu:14.04</code> 命令，即从默认的注册服务器Docker Hub Registry中的ubuntu仓库下载标签为14.04的镜像。</p>
 </blockquote>
+<ul>
+<li>国内docker注册服务器：registry.docker-cn.com，如果下载镜像遇到<code>net/http: TLS handshake timeout</code>时，请更改仓库地址，比如，下载报错信息如下：</li>
+</ul>
+<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">root@lab-NF5270M3:/home/lab# docker pull yangxuan8282/kodexplorer</span></span><br><span class="line"><span class="attribute">Using default tag</span>: latest</span><br><span class="line"><span class="attribute">latest</span>: Pulling from yangxuan8282/kodexplorer</span><br><span class="line"><span class="attribute">81033e7c1d6a</span>: Pulling fs layer </span><br><span class="line"><span class="attribute">347280e4401e</span>: Pulling fs layer </span><br><span class="line"><span class="attribute">575b1e17046f</span>: Pulling fs layer </span><br><span class="line"><span class="attribute">b26c263d6f02</span>: Waiting </span><br><span class="line"><span class="attribute">f55d9e54ee0d</span>: Waiting </span><br><span class="line"><span class="attribute">a22a8dbb425c</span>: Waiting </span><br><span class="line"><span class="attribute">758733242058</span>: Waiting </span><br><span class="line"><span class="attribute">e0bd6fc2dfa9</span>: Waiting </span><br><span class="line"><span class="attribute">89aeba08ca46</span>: Waiting </span><br><span class="line"><span class="attribute">cb59dd8adaeb</span>: Waiting </span><br><span class="line"><span class="attribute">0d607511c911</span>: Waiting </span><br><span class="line"><span class="attribute">1563ddd0db9c</span>: Waiting </span><br><span class="line"><span class="attribute">error pulling image configuration</span>: Get https://dseasb33srnrn.cloudfront.net/registry-v2/docker/registry/v2/blobs/sha256/4a/4a4d9ae68feac9a584d13a5081fec2baea80e7b9dafb868218a0b3052b72f74d/data?Expires=1523229952&amp;Signature=Iltns2XwaWRvKCo9pah3-FgMGCQBBQ2216D7BUgjMIHc2dc7oZchTjXC8PzfhE5U2cV0mfko0FqARvwXtLBtGWDme5s7LW2kKN9qnmhhdC04iCo0DXJQFJlxXFxX2nxcfHfP~qw-P0F8eq1YkExfkOHWJAuvG9prlw2f1kGQK0Y_&amp;Key-Pair-Id=APKAJECH5M7VWIS5YZ6Q: net/http: TLS handshake timeout</span><br></pre></td></tr></table></figure>
+<p>指定国内下载仓库，一切正常</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@lab-NF5270M3:/home/lab# docker pull registry.docker-<span class="keyword">cn</span>.<span class="keyword">com</span>/yangxuan8282/kodexplorer:php-amd64</span><br><span class="line">php-amd64: Pulling from yangxuan8282/kodexplorer</span><br><span class="line"><span class="number">81033</span>e7c1d6<span class="variable">a:</span> Pull <span class="built_in">complete</span> </span><br><span class="line"><span class="number">347280</span>e4401e: Pull <span class="built_in">complete</span> </span><br><span class="line"><span class="number">575</span>b1e17046f: Pull <span class="built_in">complete</span> </span><br><span class="line">b26c263d6f02: Pull <span class="built_in">complete</span> </span><br><span class="line">f55d9e54ee0d: Pull <span class="built_in">complete</span> </span><br><span class="line">a22a8dbb425c: Pull <span class="built_in">complete</span> </span><br><span class="line"><span class="number">758733242058</span>: Pull <span class="built_in">complete</span> </span><br><span class="line">e0bd6fc2dfa9: Pull <span class="built_in">complete</span> </span><br><span class="line"><span class="number">795502</span>f6f7d5: Pull <span class="built_in">complete</span> </span><br><span class="line"><span class="number">5</span>d9f160c8bb7: Pull <span class="built_in">complete</span> </span><br><span class="line"><span class="number">142712</span>ee6bcf: Pull <span class="built_in">complete</span> </span><br><span class="line"><span class="number">05</span>b803eaeaee: Pull <span class="built_in">complete</span> </span><br><span class="line">Diges<span class="variable">t:</span> <span class="built_in">sha256</span>:c7c2d60f41c7acd569e6958ae7e01b82408313b6052368631543f8cc594bbc84</span><br><span class="line">Statu<span class="variable">s:</span> Downloaded newer image <span class="keyword">for</span> registry.docker-<span class="keyword">cn</span>.<span class="keyword">com</span>/yangxuan8282/kodexplorer:php-amd64</span><br></pre></td></tr></table></figure>
+<p><strong>最简单的解决方法</strong>：打开小火箭，然后搭个梯子就好了。  </p>
 <ul>
 <li>查看镜像<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker images</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -558,15 +565,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,7 +581,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">

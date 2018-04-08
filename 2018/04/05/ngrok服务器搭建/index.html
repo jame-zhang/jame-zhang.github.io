@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/05/ngrok服务器搭建/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口  　　如何搭建自己的ngrok服务器，详细可以看github上的ngrok项目里的doc文件夹里面的文档和">
-<meta property="og:updated_time" content="2018-04-06T02:38:11.151Z">
+<meta property="og:updated_time" content="2018-04-08T08:40:17.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngrok服务器搭建">
 <meta name="twitter:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口  　　如何搭建自己的ngrok服务器，详细可以看github上的ngrok项目里的doc文件夹里面的文档和">
@@ -188,7 +188,7 @@ ga('send', 'pageview');
 </ol>
 <ul>
 <li><p><strong>下载ngrok源码</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/inconshreveable/ngrok.git</span><br><span class="line"><span class="built_in">export</span> GOPATH=/usr/<span class="built_in">local</span>/ngrok/</span><br><span class="line"><span class="built_in">export</span> NGROK_DOMAIN=<span class="string">"example.com"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/inconshreveable/ngrok.git</span><br><span class="line"><span class="built_in">export</span> GOPATH=/usr/<span class="built_in">local</span>/ngrok/</span><br><span class="line"><span class="built_in">export</span> NGROK_DOMAIN=<span class="string">"jame-zhang.tops"</span> <span class="comment">#改成自己的域名</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>生成证书</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ngrok <span class="comment">#进入源码的文件夹里面</span></span><br><span class="line">openssl genrsa -out rootCA.key 2048</span><br><span class="line">openssl req -x509 -new -nodes -key rootCA.key -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -days 5000 -out rootCA.pem</span><br><span class="line">openssl genrsa -out server.key 2048</span><br><span class="line">openssl req -new -key server.key -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -out server.csr</span><br><span class="line">openssl x509 -req -<span class="keyword">in</span> server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out server.crt -days 5000</span><br></pre></td></tr></table></figure>
@@ -219,6 +219,7 @@ ga('send', 'pageview');
 <li>为了避免防火墙问题导致转发失败，推荐直接用关闭防火墙的vps进行测试和布置，在你测试成功后再更改对应的端口；</li>
 <li>某位大神跟我说ngrok有内存泄露问题，不会回收释放内存，实际情况还没有验证，所以推荐使用frp。</li>
 </ol>
+<h3 id="ngrok内存泄露问题"><a href="#ngrok内存泄露问题" class="headerlink" title="ngrok内存泄露问题"></a>ngrok内存泄露问题</h3><p><a href="http://txren.cc/bianchenghuanjing/3.html" target="_blank" rel="noopener">http://txren.cc/bianchenghuanjing/3.html</a></p>
 
       
 
@@ -506,15 +507,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,7 +523,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
