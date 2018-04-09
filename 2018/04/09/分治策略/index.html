@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.jame-zhang.top">
-  <title>Tag: HIFI耳机相关 | Jame-Zhang的博客</title>
+  <title>分治策略 | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="迷茫中的研究僧">
-<meta name="keywords" content="深度学习,开发者,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jame-Zhang的博客">
-<meta property="og:url" content="https://www.jame-zhang.top/tags/HIFI耳机相关/index.html">
+  <meta name="description" content="分治策略　　分治（divide and conquer），分治法的设计思想是，将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。 分治法的适用条件：  问题规模缩小到一定的程度就可以容易地解决 可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质 分解出的子问题的解可以合并为该问题的解 分解1出的子问题是相互独立的，即子问题之间不包含公共的子问题（若不独立">
+<meta name="keywords" content="学习笔记-算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分治策略">
+<meta property="og:url" content="https://www.jame-zhang.top/2018/04/09/分治策略/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
-<meta property="og:description" content="迷茫中的研究僧">
+<meta property="og:description" content="分治策略　　分治（divide and conquer），分治法的设计思想是，将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。 分治法的适用条件：  问题规模缩小到一定的程度就可以容易地解决 可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质 分解出的子问题的解可以合并为该问题的解 分解1出的子问题是相互独立的，即子问题之间不包含公共的子问题（若不独立">
+<meta property="og:updated_time" content="2018-04-09T05:36:39.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jame-Zhang的博客">
-<meta name="twitter:description" content="迷茫中的研究僧">
+<meta name="twitter:title" content="分治策略">
+<meta name="twitter:description" content="分治策略　　分治（divide and conquer），分治法的设计思想是，将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。 分治法的适用条件：  问题规模缩小到一定的程度就可以容易地解决 可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质 分解出的子问题的解可以合并为该问题的解 分解1出的子问题是相互独立的，即子问题之间不包含公共的子问题（若不独立">
   
   
     <link rel="icon" href="/assets/img/favicon.jpg">
@@ -157,60 +158,209 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-分治策略" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/29/音频采样率与量化精度/" class="archive-article-date">
-  	<time datetime="2018-03-29T05:36:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/29/音频采样率与量化精度/">音频采样率与量化精度</a>
+    <h1 class="article-title" itemprop="name">
+      分治策略
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/09/分治策略/" class="archive-article-date">
+  	<time datetime="2018-04-09T01:56:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="分治策略"><a href="#分治策略" class="headerlink" title="分治策略"></a>分治策略</h2><p>　　分治（divide and conquer），分治法的设计思想是，将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，<strong>分而治之</strong>。</p>
+<p><strong>分治法的适用条件：</strong></p>
+<ul>
+<li>问题规模<strong>缩小到一定的程度</strong>就可以<strong>容易地解决</strong></li>
+<li>可以<strong>分解</strong>为若干个规模较<strong>小</strong>的<strong>相同</strong>问题，即该问题具有<strong>最优子结构性质</strong></li>
+<li>分解出的子问题的解<strong>可以合并</strong>为该问题的解</li>
+<li>分解1出的子问题是相互独立的，即子问题之间不包含公共的子问题（若不独立，则需要做许多不必要的工作，重复解公共子问题，一般用动态规划）</li>
+</ul>
+<blockquote>
+<p>在用分治法设计算法时，最好使子问题的规模大致相同。即将一个问题分成大小相等的k个子问题的处理方法是行之有效的。这种使子问题规模大致相等的做法是出自一种平衡(balancing)子问题的思想，它几乎总是比子问题规模不等的做法要好.</p>
+</blockquote>
+<p><strong>例子：</strong>二分查找就是分治法的典型例子</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢请我吃糖，我跟你其实只有一个微信的距离！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HIFI耳机相关</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习笔记-算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://www.jame-zhang.top/2018/04/09/分治策略/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/08/程序员的站点/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">程序员的站点</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMjg3OS85NDQw">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
 
 
           </div>
@@ -236,9 +386,9 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

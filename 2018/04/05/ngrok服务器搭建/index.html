@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/05/ngrok服务器搭建/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口  　　如何搭建自己的ngrok服务器，详细可以看github上的ngrok项目里的doc文件夹里面的文档和">
-<meta property="og:updated_time" content="2018-04-08T08:40:17.906Z">
+<meta property="og:updated_time" content="2018-04-09T14:25:50.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngrok服务器搭建">
 <meta name="twitter:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口  　　如何搭建自己的ngrok服务器，详细可以看github上的ngrok项目里的doc文件夹里面的文档和">
@@ -183,7 +183,7 @@ ga('send', 'pageview');
 </blockquote>
 <p>　　如何搭建自己的ngrok服务器，详细可以看github上的<a href="https://github.com/inconshreveable/ngrok" target="_blank" rel="noopener">ngrok</a>项目里的doc文件夹里面的文档和README文件：  </p>
 <ol>
-<li>配置好环境，git,go(基于1.42的基础上的，所以推荐安装1.42，其他版本没试过)</li>
+<li>配置好环境，git,go(参考的博客是基于1.42的基础上的，所以推荐安装1.42，<del>其他版本没试过</del>，实际上高于1.42的是可以的)</li>
 <li>按照步骤配置<a id="more"></a></li>
 </ol>
 <ul>
@@ -220,6 +220,7 @@ ga('send', 'pageview');
 <li>某位大神跟我说ngrok有内存泄露问题，不会回收释放内存，实际情况还没有验证，所以推荐使用frp。</li>
 </ol>
 <h3 id="ngrok内存泄露问题"><a href="#ngrok内存泄露问题" class="headerlink" title="ngrok内存泄露问题"></a>ngrok内存泄露问题</h3><p><a href="http://txren.cc/bianchenghuanjing/3.html" target="_blank" rel="noopener">http://txren.cc/bianchenghuanjing/3.html</a></p>
+<p>参考：<br>*<a href="https://www.sunnyos.com/article-show-48.html" target="_blank" rel="noopener">sunny博客</a></p>
 
       
 
@@ -495,19 +496,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-软件推荐</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-软件推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,19 +524,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习笔记-算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
