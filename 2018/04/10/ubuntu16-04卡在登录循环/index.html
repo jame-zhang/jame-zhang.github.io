@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://www.jame-zhang.top">
   <title>ubuntu16.04卡在登录循环 | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="运气正好，不知道为什么突然实验室的服务器出现问题了，是我装了dokcer的原因吗？问题就是一直卡在登录的界面，密码输入正确后，然后黑屏又跳回来让你重新输入密码登陆，一直循环  解决办法　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  更改用户目录的权限，查看权限的时候发现时-drwxr-xr-x，用root用户更改了权限后，发现问题解决了。   参考：  csdn askubunt">
+  <meta name="description" content="运气正好，不知道为什么突然实验室的服务器出现问题了，是我装了dokcer的原因吗？问题就是一直卡在登录的界面，密码输入正确后，然后黑屏又跳回来让你重新输入密码登陆，一直循环  解决办法　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  更改用户目录的权限，查看权限的时候发现时drwxr-xr-x，用root用户更改了权限后，权限更改为drwxrwxrwx，发现问题解决了。   参考：">
 <meta name="keywords" content="学习笔记-ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu16.04卡在登录循环">
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/10/ubuntu16-04卡在登录循环/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
-<meta property="og:description" content="运气正好，不知道为什么突然实验室的服务器出现问题了，是我装了dokcer的原因吗？问题就是一直卡在登录的界面，密码输入正确后，然后黑屏又跳回来让你重新输入密码登陆，一直循环  解决办法　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  更改用户目录的权限，查看权限的时候发现时-drwxr-xr-x，用root用户更改了权限后，发现问题解决了。   参考：  csdn askubunt">
-<meta property="og:updated_time" content="2018-04-10T07:03:43.786Z">
+<meta property="og:description" content="运气正好，不知道为什么突然实验室的服务器出现问题了，是我装了dokcer的原因吗？问题就是一直卡在登录的界面，密码输入正确后，然后黑屏又跳回来让你重新输入密码登陆，一直循环  解决办法　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  更改用户目录的权限，查看权限的时候发现时drwxr-xr-x，用root用户更改了权限后，权限更改为drwxrwxrwx，发现问题解决了。   参考：">
+<meta property="og:updated_time" content="2018-04-10T12:41:09.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu16.04卡在登录循环">
-<meta name="twitter:description" content="运气正好，不知道为什么突然实验室的服务器出现问题了，是我装了dokcer的原因吗？问题就是一直卡在登录的界面，密码输入正确后，然后黑屏又跳回来让你重新输入密码登陆，一直循环  解决办法　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  更改用户目录的权限，查看权限的时候发现时-drwxr-xr-x，用root用户更改了权限后，发现问题解决了。   参考：  csdn askubunt">
+<meta name="twitter:description" content="运气正好，不知道为什么突然实验室的服务器出现问题了，是我装了dokcer的原因吗？问题就是一直卡在登录的界面，密码输入正确后，然后黑屏又跳回来让你重新输入密码登陆，一直循环  解决办法　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  更改用户目录的权限，查看权限的时候发现时drwxr-xr-x，用root用户更改了权限后，权限更改为drwxrwxrwx，发现问题解决了。   参考：">
   
   
     <link rel="icon" href="/assets/img/favicon.jpg">
@@ -181,7 +181,7 @@ ga('send', 'pageview');
         <blockquote>
 <p>运气正好，不知道为什么突然实验室的服务器出现问题了，是我装了dokcer的原因吗？<br>问题就是一直卡在登录的界面，密码输入正确后，然后黑屏又跳回来让你重新输入密码登陆，一直循环</p>
 </blockquote>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  <strong>更改用户目录的权限</strong>，查看权限的时候发现时<code>-drwxr-xr-x</code>，用root用户更改了权限后，发现问题解决了。  </p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>　　分别百度和谷歌了一下，试了集中方法，最后解决的方法就是：  <strong>更改用户目录的权限</strong>，查看权限的时候发现时<code>drwxr-xr-x</code>，用root用户更改了权限后，权限更改为<code>drwxrwxrwx</code>，发现问题解决了。  </p>
 <p><strong>参考</strong>：</p>
 <ul>
 <li><a href="https://blog.csdn.net/junmuzi/article/details/52253784" target="_blank" rel="noopener">csdn</a></li>
@@ -300,6 +300,15 @@ ga('send', 'pageview');
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/04/11/Linux命令记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux命令记录
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/10/卷积网络综述/" id="article-nav-older" class="article-nav-link-wrap">
@@ -465,11 +474,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,7 +490,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,15 +510,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">

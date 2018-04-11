@@ -17,7 +17,7 @@
 <meta property="og:description" content="这几天研究ngrok的使用，用谷歌的vps测试了下，发现一起正常，然后突然想到，树莓派能运行服务器端或者运行客户端呢，答案是肯定的  搭建的探索进程按照编译的标准流程刚开始想着按照标准的编译流程在树莓派安装环境（go、git、其他依赖），结果失败。 首先go语言arm架构的软件包需要自己编译，手上的树莓派型号是：树莓派3 B型的机器，架构是armv7，然后到go语言官网只找到了armv6的软件，">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/pie-ngrok.png">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/pie-docker-error.png">
-<meta property="og:updated_time" content="2018-04-09T14:51:17.755Z">
+<meta property="og:updated_time" content="2018-04-10T12:47:07.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用树莓派搭建你自己的ngrok服务器">
 <meta name="twitter:description" content="这几天研究ngrok的使用，用谷歌的vps测试了下，发现一起正常，然后突然想到，树莓派能运行服务器端或者运行客户端呢，答案是肯定的  搭建的探索进程按照编译的标准流程刚开始想着按照标准的编译流程在树莓派安装环境（go、git、其他依赖），结果失败。 首先go语言arm架构的软件包需要自己编译，手上的树莓派型号是：树莓派3 B型的机器，架构是armv7，然后到go语言官网只找到了armv6的软件，">
@@ -197,7 +197,7 @@ ga('send', 'pageview');
 <h3 id="思考了一下发现解决办法（做事情，思考很重要呀）"><a href="#思考了一下发现解决办法（做事情，思考很重要呀）" class="headerlink" title="思考了一下发现解决办法（做事情，思考很重要呀）"></a>思考了一下发现解决办法（做事情，思考很重要呀）</h3><p>　　试了👆的两个方法失败后，冷静地思考了下，发现编译的时候不是会传递架构的参数吗？<code>GOOS=linux GOARCH=amd64 make release-server</code>，而且客户端和服务器认证的时候是通过证书的，所以我只要生成树莓派的证书，然后复制到ngrok的源码里面不就成了吗？结果 –&gt; 成功。<br>所以把ngrok部署在树莓派（可以把树莓派当服务器，或者使用客户端）的办法就是：</p>
 <ul>
 <li>找一台正常环境的centos，安装好编译环境（具体参考<a href="http://www.jame-zhang.top/2018/04/05/ngrok%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">ngrok服务器搭建</a>的文章）</li>
-<li><p>然后在你的树莓派上生成证书，拷贝到编译用的centos，生成证书的代码是：</p>
+<li><p>然后在你的<strong>树莓派上生成证书</strong>，<strong>拷贝到编译用的centos</strong>，生成证书的代码是：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out rootCA<span class="selector-class">.key</span> <span class="number">2048</span></span><br><span class="line">openssl req -x509 -new -nodes -key rootCA<span class="selector-class">.key</span> -subj <span class="string">"/CN=$NGROK_DOMAIN"</span> -days <span class="number">5000</span> -out rootCA.pem</span><br><span class="line">openssl genrsa -out server<span class="selector-class">.key</span> <span class="number">2048</span></span><br><span class="line">openssl req -new -key server<span class="selector-class">.key</span> -subj <span class="string">"/CN=$NGROK_DOMAIN"</span> -out server.csr</span><br><span class="line">openssl x509 -req -<span class="keyword">in</span> server<span class="selector-class">.csr</span> -CA rootCA<span class="selector-class">.pem</span> -CAkey rootCA<span class="selector-class">.key</span> -CAcreateserial -out server<span class="selector-class">.crt</span> -days <span class="number">5000</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>替代好证书后，就是编译了，编译服务器的时候架构选择arm就行了（把ngrok的服务器部署在树莓派上），如果不知道参数就用<code>go env</code>查看下，前提是你得安装好go语言环境了</p>
@@ -205,8 +205,9 @@ ga('send', 'pageview');
 </li>
 </ul>
 <blockquote>
-<p>所以同样的道理，如果你想把你的ngrok放在mac上或者windows上，只要相对应的改成编译的参数就好了。</p>
+<p>所以同样的道理，如果你想把你的ngrok放在mac上或者windows上，只要相对应的改成编译的参数就好了。<br>最后只要编译生成的服务器端（主要是服务器端，客户端当然也可以）运行在树莓派上就可以了，运行参数</p>
 </blockquote>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ngrok服务端启动命令</span></span><br><span class="line">setsid ./ngrokd <span class="attribute">-domain</span>=<span class="string">"jame-zhang.top"</span> <span class="attribute">-httpAddr</span>=<span class="string">":8080"</span> <span class="attribute">-httpsAddr</span>=<span class="string">":7777"</span> <span class="attribute">-log</span>=stdout <span class="attribute">-log-level</span>=error 2&gt;&amp;1 &gt; /dev/<span class="literal">null</span> &amp; #setsid为设置后台运行模式，<span class="attribute">-log</span>=stdout <span class="attribute">-log-level</span>=error 2&gt;&amp;1 &gt; /dev/<span class="literal">null</span>是设置日志记录的格式，以及将输出直接丢到linux的黑洞里，直接丢弃，不在屏幕上输出</span><br><span class="line"><span class="comment">#客户端启动命令</span></span><br><span class="line">setsid ./ngrok-client-arm <span class="attribute">-config</span>=./ngrok.cfg <span class="attribute">-log</span>=stdout <span class="attribute">-log-level</span>=error <span class="attribute">-subdomain</span>=test 8080 2&gt;&amp;1 &gt; /dev/<span class="literal">null</span> &amp;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -494,11 +495,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,7 +511,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,15 +531,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">

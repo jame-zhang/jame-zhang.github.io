@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.jame-zhang.top">
   <title>ngrok服务器搭建 | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口   上面图是我用processon画的服务运行原理图，可以看到其实ngrok就像是反向代理服务器">
+  <meta name="description" content="写在前面如果你只是需要穿墙工具，并且是自己架设服务器的话，不要用ngrok了，这个是我研究Ngrok用法一个星期之后的教训，直接用frp既简单又方便，ngrok基本无法配置多端口，自己架设服务器，我是没有整明白，不知道作者是什么脑回路，没开放一个端口好像就得运行一个服务端，客户端可以配置。总之，要用穿墙服务直接用frp吧，frp就是在ngrok的基础上重新开发的  ngrok是内网穿透的一个工具，">
 <meta name="keywords" content="工具-ngrok">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ngrok服务器搭建">
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/05/ngrok服务器搭建/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
-<meta property="og:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口   上面图是我用processon画的服务运行原理图，可以看到其实ngrok就像是反向代理服务器">
+<meta property="og:description" content="写在前面如果你只是需要穿墙工具，并且是自己架设服务器的话，不要用ngrok了，这个是我研究Ngrok用法一个星期之后的教训，直接用frp既简单又方便，ngrok基本无法配置多端口，自己架设服务器，我是没有整明白，不知道作者是什么脑回路，没开放一个端口好像就得运行一个服务端，客户端可以配置。总之，要用穿墙服务直接用frp吧，frp就是在ngrok的基础上重新开发的  ngrok是内网穿透的一个工具，">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/pie-ngrok/ngrok-progress.png">
-<meta property="og:updated_time" content="2018-04-10T08:55:12.876Z">
+<meta property="og:updated_time" content="2018-04-11T06:26:54.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngrok服务器搭建">
-<meta name="twitter:description" content="ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&amp;gt;127.0.0.1:端口   上面图是我用processon画的服务运行原理图，可以看到其实ngrok就像是反向代理服务器">
+<meta name="twitter:description" content="写在前面如果你只是需要穿墙工具，并且是自己架设服务器的话，不要用ngrok了，这个是我研究Ngrok用法一个星期之后的教训，直接用frp既简单又方便，ngrok基本无法配置多端口，自己架设服务器，我是没有整明白，不知道作者是什么脑回路，没开放一个端口好像就得运行一个服务端，客户端可以配置。总之，要用穿墙服务直接用frp吧，frp就是在ngrok的基础上重新开发的  ngrok是内网穿透的一个工具，">
 <meta name="twitter:image" content="https://www.jame-zhang.top/assets/pie-ngrok/ngrok-progress.png">
   
   
@@ -180,7 +180,8 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>如果你只是需要穿墙工具，并且是自己架设服务器的话，<strong>不要用ngrok了</strong>，这个是我研究Ngrok用法一个星期之后的教训，直接用<a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">frp</a>既简单又方便，ngrok基本无法配置多端口，自己架设服务器，我是没有整明白，不知道作者是什么脑回路，没开放一个端口好像就得运行一个服务端，客户端可以配置。<strong>总之，要用穿墙服务直接用frp吧，frp就是在ngrok的基础上重新开发的</strong></p>
+<blockquote>
 <p>ngrok是内网穿透的一个工具，支持http、tcp协议，构建过程出现了点问题<br>最总解决办法：找了有80,443,端口的机子试了下，然后再查看帮助，ngrok -h，更改端口，发现一切正常<br>客户端开始运行是显示的是127.0.0.1:端口，连接成功后才显示域名–&gt;127.0.0.1:端口</p>
 </blockquote>
 <p><img src="/assets/pie-ngrok/ngrok-progress.png" alt=""></p>
@@ -520,11 +521,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,7 +537,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,15 +557,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">
