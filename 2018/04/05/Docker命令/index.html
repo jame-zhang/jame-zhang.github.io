@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/05/Docker命令/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="Docker常用命令介绍，持续更新了解命令的详细情况可以用 man docker 具体命令，如：man docker images查看介绍，跟官方文档一致。   更新截止时间：2018-04-10  Docker镜像操作 查看镜像（-a参数显示所有镜像，包括临时）   1docker images  下载镜像 1docker pull #eg:docker pull repository/ima">
-<meta property="og:updated_time" content="2018-04-11T10:03:10.864Z">
+<meta property="og:updated_time" content="2018-04-15T01:45:40.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker命令">
 <meta name="twitter:description" content="Docker常用命令介绍，持续更新了解命令的详细情况可以用 man docker 具体命令，如：man docker images查看介绍，跟官方文档一致。   更新截止时间：2018-04-10  Docker镜像操作 查看镜像（-a参数显示所有镜像，包括临时）   1docker images  下载镜像 1docker pull #eg:docker pull repository/ima">
@@ -197,7 +197,8 @@ ga('send', 'pageview');
 <ol>
 <li>修改默认源为国内<br>配置文件为<code>/etc/docker/daemon.json</code>，添加上 registry-mirrors 键值：</li>
 </ol>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://registry.docker-cn.com"</span>]</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">其他镜像源：</span><br><span class="line"></span><br><span class="line">* **网易**: `http:<span class="comment">//hub-mirror.c.163.com`</span></span><br><span class="line">* **USTC**: `https:<span class="comment">//docker.mirrors.ustc.edu.cn`</span></span><br><span class="line"></span><br><span class="line">再次使用`docker images`查看镜像，可以看到多了一个拥有mybuntu:latest标签的镜像，之后就可以直接使用myubuntu:latest 来表示这个镜像了，myubuntu:latest的id跟ubuntu:latest是一致的，因为他们是同一个镜像文件，只是别名不同而已，docker tag 命令添加的标签实际上起到了类似链接的作用。</span><br><span class="line"></span><br><span class="line">### 使用inspect 命令查看详细信息</span><br><span class="line">使用`docker inspect`可以获取该镜像的详细信息，包括制作者、适应框架、各层的数字摘要等   </span><br><span class="line">`docker inspect ubuntu:latest`  </span><br><span class="line">返回的是json格式的消息，如果只需要其中某项内容是，可以用`-f`参数，如  </span><br><span class="line">`docker inspect -f&#123;&#123;<span class="string">".Architecture"</span>&#125;&#125;`</span><br><span class="line">### 使用history 命令查看镜像历史</span><br><span class="line">使用history查看镜像每个层的具体内容，如：   </span><br><span class="line">`docker history ubuntu:latest`  </span><br><span class="line">**可以添加 --no-trunc=true 参数来查看完整内容**</span><br><span class="line"></span><br><span class="line">### 容器运行失败，查看失败原因</span><br><span class="line">两种方法:</span><br><span class="line"></span><br><span class="line">* `docker run -it ··· ` 将运行情况输出到屏幕上</span><br><span class="line">* `docker logs id或者容器名` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## Docker容器操作 </span><br><span class="line">### 如何进入到已经创建的容器里面 </span><br><span class="line">这里应该分两种：</span><br><span class="line"></span><br><span class="line">* 一种是直接进入镜像所运行的程序，比如有程序在进行，然后输入内容打印在stdos上，你进入后就直接可以看到程序运行的输出的。</span><br><span class="line">* 另外一种是进入到镜像的环境里面，执行相对应的bash命令等  </span><br><span class="line">两种方式的命令如下：</span><br></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://registry.docker-cn.com"</span>]</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">其他镜像源：</span><br><span class="line"></span><br><span class="line">* **网易**: `http:<span class="comment">//hub-mirror.c.163.com`</span></span><br><span class="line">* **USTC**: `https:<span class="comment">//docker.mirrors.ustc.edu.cn`</span></span><br><span class="line"></span><br><span class="line">再次使用`docker images`查看镜像，可以看到多了一个拥有mybuntu:latest标签的镜像，之后就可以直接使用myubuntu:latest 来表示这个镜像了，myubuntu:latest的id跟ubuntu:latest是一致的，因为他们是同一个镜像文件，只是别名不同而已，docker tag 命令添加的标签实际上起到了类似链接的作用。</span><br><span class="line"></span><br><span class="line">### 使用inspect 命令查看详细信息</span><br><span class="line">使用`docker inspect`可以获取该镜像的详细信息，包括制作者、适应框架、各层的数字摘要等   </span><br><span class="line">`docker inspect ubuntu:latest`  </span><br><span class="line">返回的是json格式的消息，如果只需要其中某项内容是，可以用`-f`参数，如  </span><br><span class="line">`docker inspect -f&#123;&#123;<span class="string">".Architecture"</span>&#125;&#125;`</span><br><span class="line">### 使用history 命令查看镜像历史</span><br><span class="line">使用history查看镜像每个层的具体内容，如：   </span><br><span class="line">`docker history ubuntu:latest`  </span><br><span class="line">**可以添加 --no-trunc=true 参数来查看完整内容**</span><br><span class="line"></span><br><span class="line">### 容器运行失败，查看失败原因</span><br><span class="line">两种方法:</span><br><span class="line"></span><br><span class="line">* `docker run -it ··· ` 将运行情况输出到屏幕上</span><br><span class="line">* `docker logs id或者容器名` </span><br><span class="line"></span><br><span class="line">### 运行容器时，映射端口</span><br></pre></td></tr></table></figure>
+<p>docker run -p 80:80 image_name  #将本机的80端口与容器内的80绑定<br>docker run -p 700-800:700-800 image_name  #将本机的700到800的端口与容器内的700到800绑定<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## Docker容器操作 </span><br><span class="line">### 如何进入到已经创建的容器里面 </span><br><span class="line">这里应该分两种：</span><br><span class="line"></span><br><span class="line">* 一种是直接进入镜像所运行的程序，比如有程序在进行，然后输入内容打印在stdos上，你进入后就直接可以看到程序运行的输出的。</span><br><span class="line">* 另外一种是进入到镜像的环境里面，执行相对应的bash命令等  </span><br><span class="line">两种方式的命令如下：</span><br></pre></td></tr></table></figure></p>
 <p>docker attach 已运行容器名称或者容器ID #直接进入容器<br>docker exec -it 已运行容器名称或者容器ID /bin/bash #执行bash命令<br>Docker-compose exec 与docker exec -it 等同，即Docker-compose默认分配<br><code>`</code><br>如何退出容器而不停止容器？按键<code>ctrl p</code>+<code>ctrl q</code> （distach from docker）<br><a href="https://medium.com/@RyanDavidson/run-bash-or-any-command-in-a-docker-container-9a1e7f0ec204" target="_blank" rel="noopener">reference</a></p>
 <ul>
 <li><code>docker top</code>：可以查看容器中正在运行的进程</li>
@@ -486,15 +487,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具-软件推荐</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +495,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,10 +519,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习笔记-算法</a>
               </li>
              
@@ -526,11 +527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">
