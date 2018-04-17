@@ -324,6 +324,109 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-What-Do-We-Understand-About-Convolutional-Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/">What Do We Understand About Convolutional Networks?</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/" class="archive-article-date">
+  	<time datetime="2018-04-17T11:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>卷积神经元网络综述译文，原文共有94页，看论文的时候翻译出来，记录下。<br>原文地址: <a href="https://arxiv.org/abs/1803.08834" target="_blank" rel="noopener">arxiv</a></p>
+</blockquote>
+<div style="font-size:30px;margin-top:30px" align="center">关于卷积神经元网络我们了解什么</div>
+
+<blockquote>
+<p>作者：Isma Hadji and Richard P. Wildes, Department of Electrical Engineering and Computer Science, York University,Toronto, Ontario,Canada.</p>
+</blockquote>
+<p>##第一章</p>
+<p>###介绍</p>
+<p>####1.1 写作动机<br>　　在过去的几年里，<strong>计算机视觉方面</strong>的研究主要集中在<strong>卷积神经网络</strong>，卷积神经网络也常常被叫做ConvNets或者CNNs。近年来的研究已经达到了最先进的效果，尤其是在大范围的<strong>分类</strong>[64,88,139]和<strong>回归</strong>[36,97,159]问题上。这些实现方法的历史能够追溯到很多年之前[49,91]，然而，相比之下，对于这些方法(系统)是如何达到这样出色的效果的理论研究（理解）却明显拖了后腿。事实上，现阶段很多在计算机视觉领域有显著提升的方法（原文为贡献，这里指的是有贡献的研究方法）都是将卷积神经网络当做黑盒子使用，这种黑盒子在面对为何能够达到这种效果的问题下，即使十分模糊，也依旧能够取得效果，然而从科学的角度出发的话，这个并不能让人满意。特别地，这里主要有两个相互补充的话题: (1)对于机器学习的层面上(比如：卷积核)，具体机器学习到了什么？(2)对于网络结构设计的层面上(比如：神经网络的层数，卷积核或者卷积层的数量，池化的策略，非线性激活函数的选择等)，为什么有些选择会优于别的选择？对于这些问题的答案不仅能够提高卷积神经网络的在理论层面上的认知，也能够提高实际的应用。<br>　　并且，目前对于卷积神经网络的实现需要大量的数据进行训练[84,88,91]，而且已经确定好的决定的设计（？？？不太清楚具体指的什么决定）极大地影响效果[23,77]。更深层次的理论认知应该能够减少数据驱动设计的依赖。当实证研究调查了已实现网络的表现行为，到目前为止，他们的结果极大地限制于内部数据处理的可视化，无法更好去理解在不同卷积网络层所发生的变化[104,133,154]。</p>
+<p>####1.2 目标<br>　　就像上面所提到的问题，这篇文章将会详细地阐述使用多层卷积网络结构的最显著的方法。更重要的是，典型卷积网络结构上各种各样的部分将会通过对不同方法的研究进行讨论，而且是基于在生物学发现或者是声音理论基础上的决策设计。此外，对通过可视化和实证研究去理解卷积网络的不同尝试也会进行讨论。终极目标就是能够清楚阐述设计卷积网络结构的每一层处理的作用，能够提取出我们目前对于卷积网络的认识同时能够强调出重点问题。
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　
+　　</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">论文-卷积神经元网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-Linux命令记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -459,83 +562,6 @@ ga('send', 'pageview');
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/10/ubuntu16-04卡在登录循环/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-卷积网络综述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/卷积网络综述/">卷积网络综述</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/10/卷积网络综述/" class="archive-article-date">
-  	<time datetime="2018-04-10T01:56:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近开始着手论文的事情</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习笔记-论文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/10/卷积网络综述/">展开全文 >></a>
         </p>
       
 
@@ -935,10 +961,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
               </li>
              
@@ -947,11 +969,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -963,15 +985,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习笔记-算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习笔记-论文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -979,11 +1001,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+                <a href="javascript:void(0)" class="js-tag color4">HIFI耳机相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HIFI耳机相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">置顶</a>
               </li>
             
             <div class="clearfix"></div>
