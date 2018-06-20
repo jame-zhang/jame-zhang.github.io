@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="卷积神经元网络综述译文，原文共有94页，看论文的时候翻译出来，记录下。原文地址: arxiv  关于卷积神经元网络我们了解什么    作者：Isma Hadji and Richard P. Wildes, Department of Electrical Engineering and Computer Science, York University,Toronto, Ontario,Can">
-<meta property="og:updated_time" content="2018-04-17T12:57:06.506Z">
+<meta property="og:updated_time" content="2018-05-08T01:02:13.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What Do We Understand About Convolutional Networks?">
 <meta name="twitter:description" content="卷积神经元网络综述译文，原文共有94页，看论文的时候翻译出来，记录下。原文地址: arxiv  关于卷积神经元网络我们了解什么    作者：Isma Hadji and Richard P. Wildes, Department of Electrical Engineering and Computer Science, York University,Toronto, Ontario,Can">
@@ -185,12 +185,16 @@ ga('send', 'pageview');
 
 
 <blockquote>
-<p>作者：Isma Hadji and Richard P. Wildes, Department of Electrical Engineering and Computer Science, York University,Toronto, Ontario,Canada.<br><a id="more"></a></p>
+<p>作者：Isma Hadji and Richard P. Wildes, Department of Electrical Engineering and Computer Science, York University,Toronto, Ontario,Canada.</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><h4 id="1-1-写作动机"><a href="#1-1-写作动机" class="headerlink" title="1.1 写作动机"></a>1.1 写作动机</h4><p>　　在过去的几年里，<strong>计算机视觉方面</strong>的研究主要集中在<strong>卷积神经网络</strong>，卷积神经网络也常常被叫做ConvNets或者CNNs。近年来的研究已经达到了最先进的效果，尤其是在大范围的<strong>分类</strong>[64,88,139]和<strong>回归</strong>[36,97,159]问题上。这些实现方法的历史能够追溯到很多年之前[49,91]，然而，相比之下，对于这些方法(系统)是如何达到这样出色的效果的理论研究（理解）却明显拖了后腿。事实上，现阶段很多在计算机视觉领域有显著提升的方法（原文为贡献，这里指的是有贡献的研究方法）都是将卷积神经网络当做黑盒子使用，这种黑盒子在面对为何能够达到这种效果的问题下，即使十分模糊，也依旧能够取得效果，然而从科学的角度出发的话，这个并不能让人满意。特别地，这里主要有两个相互补充的话题: (1)对于机器学习的层面上(比如：卷积核)，具体机器学习到了什么？(2)对于网络结构设计的层面上(比如：神经网络的层数，卷积核或者卷积层的数量，池化的策略，非线性激活函数的选择等)，为什么有些选择会优于别的选择？对于这些问题的答案不仅能够提高卷积神经网络的在理论层面上的认知，也能够提高实际的应用。<br>　　并且，目前对于卷积神经网络的实现需要大量的数据进行训练[84,88,91]，而且已经确定好的决定的设计（？？？不太清楚具体指的什么决定）极大地影响效果[23,77]。更深层次的理论认知应该能够减少数据驱动设计的依赖。当实证研究调查了已实现网络的表现行为，到目前为止，他们的结果极大地限制于内部数据处理的可视化，无法更好去理解在不同卷积网络层所发生的变化[104,133,154]。
 　　</p>
 <h4 id="1-2-目标"><a href="#1-2-目标" class="headerlink" title="1.2 目标"></a>1.2 目标</h4><p>　　就像上面所提到的问题，这篇文章将会详细地阐述使用多层卷积网络结构的最显著的方法。更重要的是，典型卷积网络结构上各种各样的部分将会通过对不同方法的研究进行讨论，而且是基于在生物学发现或者是声音理论基础上的决策设计。此外，对通过可视化和实证研究去理解卷积网络的不同尝试也会进行讨论。终极目标就是能够清楚阐述设计卷积网络结构的每一层处理的作用，能够提取出我们目前对于卷积网络的认识同时能够强调出重点问题。
-　　
+　　</p>
+<h4 id="1-3-论文概述"><a href="#1-3-论文概述" class="headerlink" title="1.3 论文概述"></a>1.3 论文概述</h4><p>　　这篇文章的结构如下：当前的章节提出了仔细回顾对卷积网络认知的必要性。第二章开始将会描述各种各样的多层网络以及阐述在计算机视觉应用中最好的网络结构。第三章将会集中在典型卷家网络的每一个细节里以及讨论不同组成成分的设计，包括生物学角度和学术理论角度。最后，第四章将会描述目前卷积网络的趋势、跟卷积网络理解有关所做的努力，以及提出目前仍然存在的最大的缺点和问题所在。</p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h3 id="多层网络结构"><a href="#多层网络结构" class="headerlink" title="多层网络结构"></a>多层网络结构</h3><p>　　这一章将会对目前在计算机视觉效果最为突出的多层网络结构给出简要的概述。特别的，这一章尽管会覆盖在文学方面最重要的贡献，但是不会提供详细的结构解析，因为这些可以从别的地方获得[17,56,90]。相反地，这一章的目的是为了提供基础，给其他的文献和相关的详细的介绍以及关于目前对卷积网络再视觉信息处理的讨论。</p>
+<h4 id="2-1-写作动机"><a href="#2-1-写作动机" class="headerlink" title="2.1 写作动机"></a>2.1 写作动机</h4><p>　　在以深度网络为基础的成功之前，最先进的视觉识别系统主要包括两个独立但是互补的步骤。首先，输入的数据通过手工设计的特征进行变换(比如，通过偏差值、局部和全局编码方法卷积)达到适合的形式。<br>　　<br><strong>立个flag，由于忙别的暂时把深度学习放一边，后面学习深度学习的时候，再更新</strong>
 　　
 　　
 　　
@@ -320,6 +324,15 @@ ga('send', 'pageview');
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/05/03/pandas入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          pandas入门
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/11/Linux命令记录/" id="article-nav-older" class="article-nav-link-wrap">
@@ -481,11 +494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-软件推荐</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-Linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具-软件推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,19 +506,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据比赛 - Pandas入门</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,7 +522,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,11 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HIFI耳机相关</a>
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">大数据比赛</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,7 +546,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">HIFI耳机相关</a>
               </li>
             
             <div class="clearfix"></div>
