@@ -16,8 +16,8 @@
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="一转眼两个月过去了，真的是过得毫无察觉，这两个月其实被同学拉着一起参加了腾讯广告算法大赛，第一次打比赛，初赛47名，决赛，emmmm，没好好参加，最后都没提交结果，根本来不及跑特征，跑一个模型，基本1天+。  #比赛概括　　比赛官网：http://algo.qq.com，腾讯举办的第二届比赛，我是第一次参加大数据类型的比赛。　　比赛总共分为3个阶段：  初赛：4月18号 12:00 - 5月23">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/algo/prize.png">
-<meta property="og:image" content="https://assets/process.png">
-<meta property="og:updated_time" content="2018-06-20T08:56:27.241Z">
+<meta property="og:image" content="https://www.jame-zhang.top/assets/algo/process.png">
+<meta property="og:updated_time" content="2018-06-20T09:50:09.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯广告算法大赛总结">
 <meta name="twitter:description" content="一转眼两个月过去了，真的是过得毫无察觉，这两个月其实被同学拉着一起参加了腾讯广告算法大赛，第一次打比赛，初赛47名，决赛，emmmm，没好好参加，最后都没提交结果，根本来不及跑特征，跑一个模型，基本1天+。  #比赛概括　　比赛官网：http://algo.qq.com，腾讯举办的第二届比赛，我是第一次参加大数据类型的比赛。　　比赛总共分为3个阶段：  初赛：4月18号 12:00 - 5月23">
@@ -211,7 +211,7 @@ ga('send', 'pageview');
 <h1 id="数据介绍"><a href="#数据介绍" class="headerlink" title="数据介绍"></a>数据介绍</h1><p>　　这次比赛实际上是一个CTR(Click through rate)，广告点击率问题，即给你用户和广告信息，然后预测用户是否会点击所投放的广告，初赛数据与复赛数据一致，包含四张数据表格：</p>
 <ul>
 <li><strong>train.csv</strong>：训练数据表，字段包含：aid，uid，label，aid为具体广告ID，uid为用户具体ID，ID与用户或者广告一一对应，label取值为1或者-1，分别表示相关与不相关，相关意味着用户会点击广告；</li>
-<li><strong>adFeature</strong>：广告属性数据表，字段包含：aid，advertiserId，campaignId，createId等（由于字段过多，不进行一一复述，详细请查阅<a href="/assets/2018腾讯算法大赛参赛手册-V4.pdf">参赛手册</a>，官网信息可能会更新，所以手册已经下载保存在自己的服务器上。</li>
+<li><strong>adFeature</strong>：广告属性数据表，字段包含：aid，advertiserId，campaignId，createId等（由于字段过多，不进行一一复述，详细请查阅<a href="/assets/algo/2018腾讯算法大赛参赛手册-V4.pdf">参赛手册</a>，官网信息可能会更新，所以手册已经下载保存在自己的服务器上。</li>
 <li><strong>userFeature</strong>：用户属性数据表，字段包括：uid，age，LBS，gender等</li>
 <li><strong>test.csv</strong>：测试数据集，字段包括：aid，uid，需要预测给定的aid与uid之间的相关性，给出概率</li>
 </ul>
@@ -220,7 +220,7 @@ ga('send', 'pageview');
 <p>初赛数据，解压后近5G，训练数据集有800w+样本，测试数据集200w+，用户数据集有1100w+条目，广告数据集有179条，数据拼接后大小近8G<br>复赛数据，解压后近16G，训练数据集有4500w+样本，测试数据集1100w+，数据拼接后大小近20G</p>
 </blockquote>
 <h1 id="参赛经验"><a href="#参赛经验" class="headerlink" title="参赛经验"></a>参赛经验</h1><p>　　第一次参加比赛，所以毫无经验，不过有大佬开源<a href="https://blog.csdn.net/Bryan__/article/details/79623239" target="_blank" rel="noopener">baseline</a>，在此十分感谢bryan大佬的开源，让第一次参加的小白能够快速入门，还有官方群里的那些开源的大佬。<br>　　参赛的历程如下：<code>学习baseline</code> —-&gt; <code>自己写baseline</code> —-&gt; <code>统计分析做特征(统计特征以及交叉组合统计特征)</code> —-&gt; <code>学习其他模型</code> —-&gt; <code>跑模型并提交成绩</code></p>
-<h2 id="baseline的学习"><a href="#baseline的学习" class="headerlink" title="baseline的学习"></a>baseline的学习</h2><p>　　在你什么都不懂的时候，快速入门其实最好的资料就是有一份完整的代码，能够让你了解到整个流程，包括数据处理，模型选择，参数设计，到最后的模型应用和预测，对着代码，将代码涉及到的所有内容一点点学习，不要求所有的原理全部弄清楚，但是能达到应用和复现的程度。本次比赛的流程图如下：<br>　　<br>　　<img src="//assets/process.png" alt=""><br>　<br>　　baseline的代码包括除了上图模型融合的流程，其余的都包括了，baseline用的模型就只有一个lightgbm（决策树模型，<a href="http://naotu.baidu.com/file/49963808802423ac70d9b57199206132?token=1c587c210f9c0db4" target="_blank" rel="noopener">脑图</a>）</p>
+<h2 id="baseline的学习"><a href="#baseline的学习" class="headerlink" title="baseline的学习"></a>baseline的学习</h2><p>　　在你什么都不懂的时候，快速入门其实最好的资料就是有一份完整的代码，能够让你了解到整个流程，包括数据处理，模型选择，参数设计，到最后的模型应用和预测，对着代码，将代码涉及到的所有内容一点点学习，不要求所有的原理全部弄清楚，但是能达到应用和复现的程度。本次比赛的流程图如下：<br>　　<br>　　<img src="/assets/algo/process.png" alt=""><br>　<br>　　baseline的代码包括除了上图模型融合的流程，其余的都包括了，baseline用的模型就只有一个lightgbm（决策树模型，<a href="http://naotu.baidu.com/file/49963808802423ac70d9b57199206132?token=1c587c210f9c0db4" target="_blank" rel="noopener">脑图</a>）</p>
 <h2 id="具体知识点"><a href="#具体知识点" class="headerlink" title="具体知识点"></a>具体知识点</h2><h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><pre><code>见pandas入门
 </code></pre><h3 id="jupyter-notebook"><a href="#jupyter-notebook" class="headerlink" title="jupyter notebook"></a>jupyter notebook</h3><ul>
 <li><p>插件<a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions" target="_blank" rel="noopener">jupyter_contrib_nbextensions</a></p>
@@ -522,10 +522,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
@@ -534,7 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,10 +547,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
