@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.jame-zhang.top">
-  <title>Golang指针与JSON | Jame-Zhang的博客</title>
+  <title>vim | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="学习笔记">
+  <meta name="description" content="强大的编辑器VIM学linux的时候肯定会接触到vi和vim，只是可能有很多人（比如我）会选择性的丢弃一些东西，看到实验室对面的大佬用VIM编辑器写代码，效率不要太快，所以呀，该学的还是得学的，之前丢了现在只能补回来。  直接看参考连接，这个文档只是为了记录学习过程，并不是为了整理学习教程，所以文档是符合我自己的习惯的，如果想学VIM直接看参考链接即可">
+<meta name="keywords" content="工具-VIM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Golang指针与JSON">
-<meta property="og:url" content="https://www.jame-zhang.top/2018/03/29/Golang指针与JSON/index.html">
+<meta property="og:title" content="vim">
+<meta property="og:url" content="https://www.jame-zhang.top/2018/07/02/vim/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
-<meta property="og:image" content="https://www.jame-zhang.top/assets/Go/golang.jpg">
-<meta property="og:updated_time" content="2018-04-07T08:55:32.017Z">
+<meta property="og:description" content="强大的编辑器VIM学linux的时候肯定会接触到vi和vim，只是可能有很多人（比如我）会选择性的丢弃一些东西，看到实验室对面的大佬用VIM编辑器写代码，效率不要太快，所以呀，该学的还是得学的，之前丢了现在只能补回来。  直接看参考连接，这个文档只是为了记录学习过程，并不是为了整理学习教程，所以文档是符合我自己的习惯的，如果想学VIM直接看参考链接即可">
+<meta property="og:image" content="https://www.jame-zhang.top/assets/vim/vim.png">
+<meta property="og:updated_time" content="2018-07-04T01:44:03.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang指针与JSON">
-<meta name="twitter:image" content="https://www.jame-zhang.top/assets/Go/golang.jpg">
+<meta name="twitter:title" content="vim">
+<meta name="twitter:description" content="强大的编辑器VIM学linux的时候肯定会接触到vi和vim，只是可能有很多人（比如我）会选择性的丢弃一些东西，看到实验室对面的大佬用VIM编辑器写代码，效率不要太快，所以呀，该学的还是得学的，之前丢了现在只能补回来。  直接看参考连接，这个文档只是为了记录学习过程，并不是为了整理学习教程，所以文档是符合我自己的习惯的，如果想学VIM直接看参考链接即可">
+<meta name="twitter:image" content="https://www.jame-zhang.top/assets/vim/vim.png">
   
   
     <link rel="icon" href="/assets/img/favicon.jpg">
@@ -157,84 +160,108 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Golang指针与JSON" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vim" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Golang指针与JSON
+      vim
     </h1>
   
 
         
-        <a href="/2018/03/29/Golang指针与JSON/" class="archive-article-date">
-  	<time datetime="2018-03-29T14:55:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
+        <a href="/2018/07/02/vim/" class="archive-article-date">
+  	<time datetime="2018-07-02T08:03:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/assets/Go/golang.jpg" alt=""><br><a id="more"></a></p>
+        <p><img src="/assets/vim/vim.png" alt=""></p>
+<h1 id="强大的编辑器VIM"><a href="#强大的编辑器VIM" class="headerlink" title="强大的编辑器VIM"></a>强大的编辑器VIM</h1><p>学linux的时候肯定会接触到vi和vim，只是可能有很多人（比如我）会选择性的丢弃一些东西，看到实验室对面的大佬用VIM编辑器写代码，效率不要太快，所以呀，该学的还是得学的，之前丢了现在只能补回来。</p>
 <blockquote>
-<p>这周感觉事情好多，好忙，所以到现在GoLang的PPT还没准备，周五云计算课要就大家讲介绍Go语言的部分知识，想着做PPT，不如记录在这里。</p>
+<p>直接看参考连接，这个文档只是为了记录学习过程，并不是为了整理学习教程，所以文档是符合我自己的习惯的，如果想学VIM直接看参考链接即可</p>
 </blockquote>
-<h2 id="什么是GoLang"><a href="#什么是GoLang" class="headerlink" title="什么是GoLang"></a>什么是GoLang</h2><p>  首先编程语言分为机器语言、汇编语言和高级语言（分类不同，有的还多分了脚本语言），其中高级语言又可以分为面向对象和面向过程。</p>
-<blockquote>
-<p>下面介绍都是根据自己的理解所写的，所以不能保证100%正确和通俗易懂（官方的解释请善用搜索引擎）</p>
-</blockquote>
-<ul>
-<li>机器语言就是直接用二进制01进行表示的计算机程序和指令（会机器语言的人得有多厉害的记忆力，太可怕了，目前没遇到过），比如：0000 代表 加载（LOAD）、0001代表存储（STORE）等等，就是给每个指令编码，然后写出各种毫无逻辑的指令编码，不像高级语言，至少有自然语言的元素，有些单词还是能够看得懂的。</li>
-<li>汇编语言就是比机器语言抽象了一层的编程语言，汇编语言就有了自然语言的成分了，有些直接就是单词，比如：MOV、ADD、SUB、PUSH等指令，高级语言都会有编译过程， 在编译成机器代码之前，会保留汇编语言，之前弄过反编译和内存分析，就是用的OD（ollydbg)把exe导入，然后就可以看到程序是怎么运行的，内存是怎么变化的，OD显示分析的就是汇编的代码。</li>
-<li>高级语言有好多种，我接触过的有C,C++,C#,JAVA,PYTHON等，接触的最早的就是C语言了，而且但是开发单片机做机器人比赛的，用的STC51、STM32、飞思卡尔K60用的都是C。<code>计算机语言具有高级语言和低级语言之分</code>。而高级语言又主要是相对于汇编语言而言的，它是较接近自然语言和数学公式的编程，基本脱离了机器的硬件系统，用人们更易理解的方式编写程序。编写的程序称之为源程序。(来自百度百科)</li>
+<a id="more"></a>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h4 id="常用模式"><a href="#常用模式" class="headerlink" title="常用模式"></a>常用模式</h4><ul>
+<li>插入模式(insert)：<code>i</code>进入插入即编辑模式</li>
+<li>命令模式(normal)</li>
+<li>ESE: 回到命令模式</li>
 </ul>
-<h5 id="所以GoLang就是谷歌2009发布的第二款开源编程语言，而且是属于高级语言。"><a href="#所以GoLang就是谷歌2009发布的第二款开源编程语言，而且是属于高级语言。" class="headerlink" title="所以GoLang就是谷歌2009发布的第二款开源编程语言，而且是属于高级语言。"></a>所以<code>GoLang</code>就是谷歌2009发布的第二款开源编程语言，而且是属于高级语言。</h5><blockquote>
-<p>扯了那么多，终于回到轨道上了。</p>
-</blockquote>
-<h2 id="Go语言指针"><a href="#Go语言指针" class="headerlink" title="Go语言指针"></a>Go语言指针</h2><p>  学过C语言的时候，都知道<code>指针</code>是什么？指针简单理解起来就是用来存储内存地址的一个数据类型，各种变量和函数（也有函数指针）存储在计算机里面都会有存储地址，而这个地址就可以用指针来存和被指针引用。<br><code>Go 语言的取地址符是 &amp;，放到一个变量前使用就会返回相应变量的内存地址。</code>    </p>
-<p>以下实例演示了变量在内存中地址：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">var</span> a <span class="keyword">int</span> = <span class="number">10</span>   </span><br><span class="line"></span><br><span class="line">   fmt.Printf(<span class="string">"变量的地址: %x\n"</span>, &amp;a  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行以上代码输出结果为：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">变量的地址: <span class="number">20818a220</span></span><br></pre></td></tr></table></figure>
-<p><strong>注：</strong>不同机器得到的地址是不一样的</p>
-<blockquote>
-<p>所以<code>指针</code>就是一个用来<code>存地址</code>的数据类型，感觉跟C语言的指针没啥差别。</p>
-</blockquote>
-<p>类似于变量和常量，在使用指针前你需要声明指针。指针声明格式如下：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> var_name *<span class="keyword">var</span>-<span class="keyword">type</span></span><br></pre></td></tr></table></figure>
-<p>var-type 为指针类型，var_name 为指针变量名，* 号用于指定变量是作为一个指针。以下是有效的指针声明：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ip *<span class="keyword">int</span>        <span class="comment">/* 指向整型*/</span></span><br><span class="line"><span class="keyword">var</span> fp *<span class="keyword">float32</span>    <span class="comment">/* 指向浮点型 */</span></span><br></pre></td></tr></table></figure>
-<h3 id="如何使用指针"><a href="#如何使用指针" class="headerlink" title="如何使用指针"></a>如何使用指针</h3><ul>
-<li>声明和定义指针</li>
-<li>给指针赋值</li>
-<li>引用指针</li>
+<h3 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h4><ul>
+<li>h: 向左移动一个字符</li>
+<li>j: 向下移动</li>
+<li>k: 向上移动</li>
+<li>l: 向右移动</li>
 </ul>
-<p><code>在指针类型前面加上 * 号（前缀）来获取指针所指向的内容。</code>  </p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">   <span class="selector-tag">var</span> <span class="selector-tag">a</span> int= <span class="number">20</span>   <span class="comment">/* 声明实际变量 */</span></span><br><span class="line">   <span class="selector-tag">var</span> ip *int        <span class="comment">/* 星号声明指针变量 */</span></span><br><span class="line"></span><br><span class="line">   ip = &amp;<span class="selector-tag">a</span>  <span class="comment">/* 指针变量的存储地址 */</span></span><br><span class="line"></span><br><span class="line">   fmt.Printf(<span class="string">"a 变量的地址是: %x\n"</span>, &amp;<span class="selector-tag">a</span>  )</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* 指针变量的存储地址 */</span></span><br><span class="line">   fmt.Printf(<span class="string">"ip 变量储存的指针地址: %x\n"</span>, ip )</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* 使用指针访问值 */</span></span><br><span class="line">   fmt.Printf(<span class="string">"*ip 变量的值: %d\n"</span>, *ip )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Go-空指针"><a href="#Go-空指针" class="headerlink" title="Go 空指针"></a>Go 空指针</h3><p>  当一个指针被定义后没有分配到任何变量时，它的值为 nil，所以nil指针也称空指针，在概念上和其它语言的null、None、nil、NULL一样，都指代零值或空值，指针变量通常缩写为<code>ptr</code><br>  实例:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">var</span>  ptr *<span class="keyword">int</span></span><br><span class="line"></span><br><span class="line">   fmt.Printf(<span class="string">"ptr 的值为 : %x\n"</span>, ptr  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>空指针判断：</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">ptr</span> != <span class="keyword">nil</span>)     /* <span class="keyword">ptr</span> 不是空指针 */</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">ptr</span> == <span class="keyword">nil</span>)    /* <span class="keyword">ptr</span> 是空指针 */</span><br></pre></td></tr></table></figure>
-<h2 id="什么是JSON"><a href="#什么是JSON" class="headerlink" title="什么是JSON"></a>什么是JSON</h2><p>  JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。它基于 ECMAScript (w3c制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率(百度百科解释)。<br>  所以JSON长下面这个样子：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"firstName"</span>: <span class="string">"json"</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>  JSON 键值(Key-Value)对是用来保存 JS 对象的一种方式，和 JS 对象的写法也大同小异，键/值对组合中的键名写在前面并用双引号 “” 包裹，使用冒号 : 分隔，然后紧接着值,而且JSON里面还可以嵌套JSON对象，比如：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&#123;<span class="string">"firstName"</span>: <span class="string">"json"</span>&#125;，</span><br><span class="line">&#123;<span class="string">"LastName"</span>: <span class="string">"json2"</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><a href="https://godoc.org/github.com/tidwall/gjson" target="_blank" rel="noopener">JSON官方处理包</a></li>
-<li><a href="https://github.com/tidwall/gjson" target="_blank" rel="noopener">github上的代码</a></li>
+<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><ul>
+<li>i: 进入编辑模式，在当前光标前插入</li>
+<li>a: 进入编辑模式，在当前光标后插入</li>
+<li>A: 进入编辑模式，在当前行行末插入</li>
+<li>x: 删除光标处所在字符<ul>
+<li>xD: 删除光标处所在字符到行末的内容</li>
+<li>X: 删除光标前的字符 </li>
 </ul>
-<h3 id="gjson使用"><a href="#gjson使用" class="headerlink" title="gjson使用"></a>gjson使用</h3><ul>
-<li>获取值  </li>
+</li>
+<li>:help <command>: 显示命令帮助</li>
+<li>w/W: 跳转到下一个单词的第一个字符</li>
+<li>b/B: 跳转到上一个单词第一个字符</li>
+<li>e/W: 跳转到单词的最后一个字符，或者下一个单词的最后一个字符<ul>
+<li>如果你认为单词是由默认方式，那么就用小写的e和w。默认上来说，一个单词由字母，数字和下划线组成</li>
+<li>如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。</li>
 </ul>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import <span class="string">"github.com/tidwall/gjson"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> json = `&#123;<span class="string">"name"</span>:&#123;<span class="string">"first"</span>:<span class="string">"Janet"</span>,<span class="string">"last"</span>:<span class="string">"Prichard"</span>&#125;,<span class="string">"age"</span>:<span class="number">47</span>&#125;`</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span> &#123;</span></span><br><span class="line">	value := gjson.Get(json, <span class="string">"name.last"</span>)</span><br><span class="line">	println(value.<span class="built_in">String</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>更详细的可以直接看github上的README。</p>
-<p><strong><a href="https://www.tutorialspoint.com/online_golang_ide.php)" target="_blank" rel="noopener">Golang在线IDE</a></strong></p>
-<p><strong>参考</strong>：</p>
-<ol>
-<li><a href="http://www.runoob.com/go/go-pointers.html" target="_blank" rel="noopener">菜鸟教程</a></li>
-<li><a href="https://golang.org/#" target="_blank" rel="noopener">GoLang官网</a>（需自备梯子）</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">待续</span><br></pre></td></tr></table></figure>
+</li>
+<li><number>w/W(b/B,e/E, h(j,k,l)等操作): <number>代表数字，指定w/W(b/B,e/E等操作)进行操作的次数<ul>
+<li>比如：插入30个’-‘，命令为<code>30i-</code>，然后esc，注意esc不退出的话，并不会完成30次的操作</li>
+</ul>
+</number></number></li>
+<li>f/F<char>: 查找字母，f向右查找，F向右查找</char></li>
+<li>tx：和上面的命令类似，但是是移动到 x 的左边一个位置。（这真的很有用）</li>
+<li>0:　跳得到行首</li>
+<li>$: 跳到行末</li>
+<li>^: 到本行第一个不是blank的字符的位置(所谓blank字符就是空格，tab，换行，回车等）)</li>
+<li><em>/#: 查找光标下的字母，\</em>向后查找，#向前查找</li>
+<li>gg: 跳到文件头</li>
+<li>G: 跳到最后一行的行首<ul>
+<li><number>G: 跳到第<number>行</number></number></li>
+</ul>
+</li>
+<li>/<text>: 查找<text>文本，n跳到下一个，N跳到上一个</text></text></li>
+<li>o/O: 插入新行，o在当前行后面插入一行，O在当前行前插入一行</li>
+<li>r: 替换光标处的字符</li>
+<li>d: 删除，可与其他键合用，如: dw,d3G(光标所在处到第三行都删除)<ul>
+<li>dd: 删除当前行，同时复制到剪切板</li>
+<li>p: 粘贴剪切板的内容 </li>
+</ul>
+</li>
+<li>v: visiual模式，有显示模式</li>
+<li>% : 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）</li>
+<li>* 和 #:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，#是上一个）</li>
+<li>0y$: <ul>
+<li>0 → 先到行头</li>
+<li>y → 从这里开始拷贝</li>
+<li>$ → 拷贝到本行最后一个字符 </li>
+<li>你可可以输入 ye，从当前位置拷贝到本单词的最后一个字符。</li>
+<li>你也可以输入 y2/foo 来拷贝2个 “foo” 之间的字符串。</li>
+</ul>
+</li>
+<li>还有很多时间并不一定你就一定要按y才会拷贝，下面的命令也会被拷贝：<ul>
+<li>d (删除 )</li>
+<li>v (可视化的选择)</li>
+<li>gU (变大写)</li>
+<li>gu (变小写)</li>
+</ul>
+</li>
+<li>t, → 到逗号前的第一个字符。逗号可以变成其它字符。</li>
+<li>3fa → 在当前行查找第三个出现的a。</li>
+<li>F 和 T → 和 f 和 t 一样，只不过是相反方向。</li>
+<li>还有一个很有用的命令是 dt” → 删除所有的内容，直到遇到双引号—— “。</li>
+</ul>
+<p><strong>注：</strong>文末有两个参考链接，如果掌握了基本按键后，就可以通过最后两个链接进行训练和熟悉</p>
+<p>参考：<br><a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">简明 VIM 练级攻略</a><br><a href="http://www.openvim.com/" target="_blank" rel="noopener">interactive vim</a><br><a href="http://www.vimgenius.com/lessons/vim-intro/levels/level-1" target="_blank" rel="noopener">vim tutorial</a></p>
 
       
 
@@ -279,7 +306,7 @@ ga('send', 'pageview');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具-VIM</a>
         		</li>
       		
 		</ul>
@@ -335,7 +362,7 @@ ga('send', 'pageview');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://www.jame-zhang.top/2018/03/29/Golang指针与JSON/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://www.jame-zhang.top/2018/07/02/vim/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,18 +376,9 @@ ga('send', 'pageview');
   
 <nav id="article-nav">
   
-    <a href="/2018/04/02/Mac上的无损音乐播放器/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Mac上的无损音乐播放器
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/29/音频采样率与量化精度/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">音频采样率与量化精度</div>
+    <a href="/2018/06/26/如何下载直播视频/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何下载直播视频</div>
       <i class="icon-circle-right"></i>
     </a>
   
