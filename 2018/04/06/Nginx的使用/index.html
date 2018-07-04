@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/04/06/Nginx的使用/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="默认目录 /var/www/html /usr/share/nginx/html">
-<meta property="og:updated_time" content="2018-04-15T10:00:18.065Z">
+<meta property="og:updated_time" content="2018-07-04T05:16:28.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx的使用">
 <meta name="twitter:description" content="默认目录 /var/www/html /usr/share/nginx/html">
@@ -183,6 +183,14 @@ ga('send', 'pageview');
 <li>/usr/share/nginx/html</li>
 </ul>
 <a id="more"></a>
+<h2 id="配置站点跳转"><a href="#配置站点跳转" class="headerlink" title="配置站点跳转"></a>配置站点跳转</h2><ol>
+<li><p>jame-zhang 跳转到 <a href="http://www.jame-zhang.top">www.jame-zhang.top</a></p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">        <span class="attribute">listen 80;</span></span><br><span class="line"><span class="attribute">        server_name jame-zhang.top;</span></span><br><span class="line"><span class="attribute">        return 301 https</span>://www<span class="variable">.jame-zhang</span><span class="variable">.top</span>$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>http跳转到https</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">        <span class="attribute">server_name</span> www.jame-zhang.top;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>　　Nginx不仅可以作为一个Web服务器或反向代理服务器，还可以按照权重、轮询、ip hash、URL hash等多种方式对后端服务器的负载均衡
 　　</p>
 <h3 id="什么是负载均衡"><a href="#什么是负载均衡" class="headerlink" title="什么是负载均衡"></a>什么是负载均衡</h3><p>　　负债均衡(load balance)就是将负载分摊到多个操作单元上执行，从而提高服务的可用性和响应速度，带来更好的体验。</p>
@@ -519,11 +527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,11 +539,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,11 +555,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,11 +567,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">

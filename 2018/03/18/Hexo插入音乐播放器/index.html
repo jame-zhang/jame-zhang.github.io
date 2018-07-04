@@ -189,7 +189,7 @@ ga('send', 'pageview');
 </blockquote>
 <a id="more"></a>
 <p>下面是我个人网易云播放列表，先看下效果:<br>
-    <div id="aplayer-CaNvLIrt" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="157600392" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div></p>
+    <div id="aplayer-yiQDfxkm" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="157600392" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div></p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>其实最重要的就是hexo的一个音乐播放插件：<a href="https://hexo.io/plugins/index.html" target="_blank" rel="noopener"><code>Aplyer</code></a>, 可以在hexo的官网的插件里找到这个插件，这个插件把国内常用的音乐平台都考虑了，基本都支持的，具体用法可以看托管在github上的<a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank" rel="noopener">Readme</a>文档。</p>
 <h2 id="安装-hexo-tag-aplayer"><a href="#安装-hexo-tag-aplayer" class="headerlink" title="安装 hexo-tag-aplayer"></a>安装 hexo-tag-aplayer</h2><p>使用npm进行包安装：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> <span class="comment">--save hexo-tag-aplayer</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="使用Aplayer播放单曲音乐"><a href="#使用Aplayer播放单曲音乐" class="headerlink" title="使用Aplayer播放单曲音乐"></a>使用Aplayer播放单曲音乐</h2><p>安装完之后，在你的博文Markdown文档中插入下面代码，就可以播放了<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% aplayer title author url [picture_url, narrow, autoplay, width:xxx, lrc:xxx] %&#125;</span><br></pre></td></tr></table></figure></p>
@@ -197,14 +197,14 @@ ga('send', 'pageview');
 <p><strong>注意：</strong>上面单曲的内容没有显示出来，是因为一个文档里面不支持包含metingJS、Aplayer同时播放，而且根据我自己的测试，是优先播放MetingJS的插件，也就是专辑播放的优先级大于单曲播放，但是可以使用metingJS进行单曲播放，比如：</p>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting <span class="string">"427614378"</span> <span class="string">"netease"</span> <span class="string">"song"</span> %&#125;</span><br></pre></td></tr></table></figure>
 
-    <div id="aplayer-ZmPaXvIp" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="427614378" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-AshyejFC" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="427614378" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 <p>上面的内容都是需要自己填的，包括图片地址，mp3地址(可以是本地，也可以是放在别的服务器上的url) ，具体怎么获取，我是利用chrome的开发工具查看资源的地址，后面再用一篇博文专门介绍下chrome的开发工具的使用。</p>
 <p><img src="/assets/Hexo插入音乐播放器/chrome.png" alt=""></p>
 <h2 id="使用MeingJS播放专辑和列表"><a href="#使用MeingJS播放专辑和列表" class="headerlink" title="使用MeingJS播放专辑和列表"></a>使用MeingJS播放专辑和列表</h2><p>在配置文件<code>_config.yml</code>启用MeingJS<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">aplayer:</span></span><br><span class="line"><span class="attr">  meting:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
 <p>然后插入代码<br><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!-- Simple example (id, server, type)  --&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">meting</span> "60198" "netease" "playlist" %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- Advanced example --&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">meting</span> "60198" "netease" "playlist" "autoplay" "mutex:false" "listmaxheight:340px" "preload:none" "theme:#ad7a86"%&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure></p>
 <p>比如，插入我个人网易云播放列表：<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting <span class="string">"157600392"</span> <span class="string">"netease"</span> <span class="string">"playlist"</span> %&#125;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br>
-    <div id="aplayer-uRjtYWXP" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="157600392" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div></p>
+    <div id="aplayer-hKIYNhPK" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="157600392" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div></p>
 <h2 id="关于id"><a href="#关于id" class="headerlink" title="关于id"></a>关于id</h2><p>网易云打开一首歌，或者一个列表，在浏览器的地址栏就可以看到id号<br><img src="/assets/Hexo插入音乐播放器/music.png" alt=""></p>
 <p>下面是我参考的几篇文章：</p>
 <ul>
@@ -504,11 +504,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,11 +516,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,11 +532,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,11 +544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">
