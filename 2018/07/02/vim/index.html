@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="强大的编辑器VIM学linux的时候肯定会接触到vi和vim，只是可能有很多人（比如我）会选择性的丢弃一些东西，看到实验室对面的大佬用VIM编辑器写代码，效率不要太快，所以呀，该学的还是得学的，之前丢了现在只能补回来。  直接看参考连接，这个文档只是为了记录学习过程，并不是为了整理学习教程，所以文档是符合我自己的习惯的，如果想学VIM直接看参考链接即可">
 <meta property="og:image" content="https://www.jame-zhang.top/assets/vim/vim.png">
-<meta property="og:updated_time" content="2018-07-04T01:44:03.629Z">
+<meta property="og:updated_time" content="2018-07-04T04:59:31.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim">
 <meta name="twitter:description" content="强大的编辑器VIM学linux的时候肯定会接触到vi和vim，只是可能有很多人（比如我）会选择性的丢弃一些东西，看到实验室对面的大佬用VIM编辑器写代码，效率不要太快，所以呀，该学的还是得学的，之前丢了现在只能补回来。  直接看参考连接，这个文档只是为了记录学习过程，并不是为了整理学习教程，所以文档是符合我自己的习惯的，如果想学VIM直接看参考链接即可">
@@ -198,7 +198,10 @@ ga('send', 'pageview');
 <li>l: 向右移动</li>
 </ul>
 <h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><ul>
+<li>u: 撤销修改</li>
+<li>U: 撤销一整行的修改</li>
 <li>i: 进入编辑模式，在当前光标前插入</li>
+<li>I: 进入编辑模式，在行首插入</li>
 <li>a: 进入编辑模式，在当前光标后插入</li>
 <li>A: 进入编辑模式，在当前行行末插入</li>
 <li>x: 删除光标处所在字符<ul>
@@ -209,7 +212,8 @@ ga('send', 'pageview');
 <li>:help <command>: 显示命令帮助</li>
 <li>w/W: 跳转到下一个单词的第一个字符</li>
 <li>b/B: 跳转到上一个单词第一个字符</li>
-<li>e/W: 跳转到单词的最后一个字符，或者下一个单词的最后一个字符<ul>
+<li>e/E: 跳转到单词的最后一个字符，或者下一个单词的最后一个字符<ul>
+<li>2e: 跳到下一个单词的末尾</li>
 <li>如果你认为单词是由默认方式，那么就用小写的e和w。默认上来说，一个单词由字母，数字和下划线组成</li>
 <li>如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。</li>
 </ul>
@@ -222,7 +226,7 @@ ga('send', 'pageview');
 <li>tx：和上面的命令类似，但是是移动到 x 的左边一个位置。（这真的很有用）</li>
 <li>0:　跳得到行首</li>
 <li>$: 跳到行末</li>
-<li>^: 到本行第一个不是blank的字符的位置(所谓blank字符就是空格，tab，换行，回车等）)</li>
+<li>^: 跳到本行第一个不是blank的字符的位置(所谓blank字符就是空格，tab，换行，回车等）)</li>
 <li><em>/#: 查找光标下的字母，\</em>向后查找，#向前查找</li>
 <li>gg: 跳到文件头</li>
 <li>G: 跳到最后一行的行首<ul>
@@ -232,12 +236,21 @@ ga('send', 'pageview');
 <li>/<text>: 查找<text>文本，n跳到下一个，N跳到上一个</text></text></li>
 <li>o/O: 插入新行，o在当前行后面插入一行，O在当前行前插入一行</li>
 <li>r: 替换光标处的字符</li>
-<li>d: 删除，可与其他键合用，如: dw,d3G(光标所在处到第三行都删除)<ul>
-<li>dd: 删除当前行，同时复制到剪切板</li>
-<li>p: 粘贴剪切板的内容 </li>
+<li><strong>R</strong>: 进入替换模式</li>
+<li><p>d: 删除，可与其他键合用，如: dw,d3G(光标所在处到第三行都删除)</p>
+<ul>
+<li><strong>dd</strong>: 删除当前行，同时复制到剪切板</li>
+<li>3dd: 删除三行</li>
+<li><strong>dw</strong>: 删除当前单词</li>
+<li><strong>d$/D</strong>: 删除光标所在处至行末</li>
+<li><strong>p</strong>: 光标前粘贴剪切板的内容 </li>
+<li><strong>P</strong>: 光标后粘贴剪切板的内容 </li>
+<li><strong>cw</strong>: 更改单词</li>
+<li><strong>c$/C</strong>: 更改至行末</li>
 </ul>
 </li>
-<li>v: visiual模式，有显示模式</li>
+<li><p>v: visiual模式，有显示模式</p>
+</li>
 <li>% : 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）</li>
 <li>* 和 #:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，#是上一个）</li>
 <li>0y$: <ul>
@@ -250,7 +263,11 @@ ga('send', 'pageview');
 </li>
 <li>还有很多时间并不一定你就一定要按y才会拷贝，下面的命令也会被拷贝：<ul>
 <li>d (删除 )</li>
-<li>v (可视化的选择)</li>
+<li>v (可视化的选择)<ul>
+<li>vw: 可视化模式下选择单词 </li>
+<li>vwd or vwx: 可视化模式下选择下一单词第一个字符，然后删除选中部分</li>
+</ul>
+</li>
 <li>gU (变大写)</li>
 <li>gu (变小写)</li>
 </ul>
@@ -259,6 +276,17 @@ ga('send', 'pageview');
 <li>3fa → 在当前行查找第三个出现的a。</li>
 <li>F 和 T → 和 f 和 t 一样，只不过是相反方向。</li>
 <li>还有一个很有用的命令是 dt” → 删除所有的内容，直到遇到双引号—— “。</li>
+<li>ctrl+o: 跳转到上一位置(往前跳)</li>
+<li>ctrl+i: 跳转到下一位置(往回跳)</li>
+<li>%: 跳到括号</li>
+<li><code>:%s/bad/good</code>: 当前行用good替换bad</li>
+<li><code>:%s/hi/bye/g</code>: 整个文件中，用bye替换hi</li>
+<li><code>:%s/x/y/gc</code>: 整个文件中，用y替换x，同时提示</li>
+<li><code>:!ls</code> : 运行ls shell命令</li>
+<li><code>:w play.rb</code>: 保存到play.rb文件</li>
+<li><code>:r play.rb</code>: 打开play.rb文件</li>
+<li><code>:e sun.rb</code>: 重新编辑sun.rb文件，当外部文件改变时，进行重新加载</li>
+<li><code>:help &lt;command&gt;</code>:  查看<command>的帮助文档</li>
 </ul>
 <p><strong>注：</strong>文末有两个参考链接，如果掌握了基本按键后，就可以通过最后两个链接进行训练和熟悉</p>
 <p>参考：<br><a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">简明 VIM 练级攻略</a><br><a href="http://www.openvim.com/" target="_blank" rel="noopener">interactive vim</a><br><a href="http://www.vimgenius.com/lessons/vim-intro/levels/level-1" target="_blank" rel="noopener">vim tutorial</a></p>
@@ -528,11 +556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,11 +600,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
               </li>
              
               <li class="article-tag-list-item">
