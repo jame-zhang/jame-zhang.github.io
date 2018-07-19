@@ -437,88 +437,9 @@ ga('send', 'pageview');
 <blockquote>
 <p>使用<code>platform</code>包，版本为：platform.python_version_tuple()</p>
 </blockquote>
-<ul>
-<li><strong>获取文件名</strong></li>
-</ul>
-<blockquote>
-<p>os.path.basename(sys.argv[0])，返回路径拆分的tail名称，如：/home/temp/temp.py, 获得的是temp.py</p>
-</blockquote>
-<ul>
-<li><strong>logging的用法</strong></li>
-</ul>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os.<span class="built_in">path</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    program = os.<span class="built_in">path</span>.basename(sys.argv[<span class="number">0</span>])</span><br><span class="line">    logger = logging.getLogger(program)</span><br><span class="line">    logging.basicConfig(format=<span class="string">'%(asctime)s: %(levelname)s: %(message)s'</span>)</span><br><span class="line">    logging.root.setLevel(level=logging.INFO)</span><br><span class="line">    logger.info(<span class="string">"running %s"</span> % <span class="string">' '</span>.join(sys.argv))</span><br><span class="line">	</span><br><span class="line">	 logger.info(<span class="string">"use info to print info"</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><strong>print函数不换行</strong></p>
-<blockquote>
-<p>print函数不换行， end=’’”</p>
-</blockquote>
-</li>
-<li><p><strong>map函数</strong></p>
-<blockquote>
-<p>map函数进行映射，map(str,a)将a里面的元素转化为str类型</p>
-</blockquote>
-</li>
-<li><p><strong>list.copy为浅拷贝</strong></p>
-<blockquote>
-<p> list.copy为浅拷贝，list.copy() – Return a shallow copy of the list. Equivalent to a[:].</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><strong>number包</strong></p>
-<blockquote>
-<p>numbers包为数字包，判断一个变量是否为整数，isinstance(o, numbers.Intergral)，是否为数字isinstance(o, numbers.Number)</p>
-</blockquote>
-</li>
-<li><p><strong>isinstance</strong></p>
-<blockquote>
-<p>isinstance判断一个对象是否为某个类型，与type()不同的是，isinstance考虑了类的继承关系</p>
-</blockquote>
-</li>
-<li><p><strong>str()与repr(）的区别</strong></p>
-<blockquote>
-<p>str是转化为人类可读，repr是转化为机器可读的字符串类型</p>
-</blockquote>
-</li>
-<li><p><strong>下划线开头</strong></p>
-<blockquote>
-<p>函数前单下划线表示私有</p>
-</blockquote>
-</li>
-<li><p><strong>字典get用法</strong></p>
-</li>
-<li><blockquote>
-<p>dictionary.get(“key”, N)，有key则返回key对应的value否者返回N</p>
-</blockquote>
-</li>
-<li><p><strong>字典排序</strong></p>
-<blockquote>
-<p>对字典进行排序，sorted函数，根据value进行排序sotred(dict, key= lambda x:dict[x], reverse=True)</p>
-</blockquote>
-</li>
-<li><strong>字典修改</strong><blockquote>
-<p>{}.fromkeys(key, value)，key和value可以使值或者列表，列表快速构建词典</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><strong>拼接变量与字符串</strong></p>
-<blockquote>
-<p><code>&#39;data_batch_%d&#39; % num</code> 或 <code>&#39;data_batch_{}&#39;.fomat(b)</code></p>
-</blockquote>
-</li>
-<li><p><strong>去除html标签</strong></p>
-<blockquote>
-<p>bs4包的BeautifulSoup, bs4.BeautifulSoup(text, ‘html.parser’).get_text()</p>
-</blockquote>
-</li>
-<li><p><strong>正则表达式替换</strong></p>
-<blockquote>
-<p>text = re.sub(r’[^a-zA-Z]’, ‘ ‘, raw_text)，非字母全部替换</p>
-</blockquote>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2018/07/13/python笔记/#more">More >></a>
+        
       
 
       
