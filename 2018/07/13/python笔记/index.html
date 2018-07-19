@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.jame-zhang.top">
-  <title>Tag: 学习笔记-ubuntu | Jame-Zhang的博客</title>
+  <title>python笔记 | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="迷茫中的研究僧">
-<meta name="keywords" content="深度学习,开发者,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jame-Zhang的博客">
-<meta property="og:url" content="https://www.jame-zhang.top/tags/学习笔记-ubuntu/index.html">
+  <meta name="description" content="python学习笔记，方便查找   不同python版本兼容   使用six模块，如cpickle模块，python3中合并为pickle，导入包from six.moves import cpickle as pickle   获取python版本   使用platform包，版本为：platform.python_version_tuple()   获取文件名   os.path.basen">
+<meta name="keywords" content="学习笔记-Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python笔记">
+<meta property="og:url" content="https://www.jame-zhang.top/2018/07/13/python笔记/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
-<meta property="og:description" content="迷茫中的研究僧">
+<meta property="og:description" content="python学习笔记，方便查找   不同python版本兼容   使用six模块，如cpickle模块，python3中合并为pickle，导入包from six.moves import cpickle as pickle   获取python版本   使用platform包，版本为：platform.python_version_tuple()   获取文件名   os.path.basen">
+<meta property="og:updated_time" content="2018-07-19T06:02:25.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jame-Zhang的博客">
-<meta name="twitter:description" content="迷茫中的研究僧">
+<meta name="twitter:title" content="python笔记">
+<meta name="twitter:description" content="python学习笔记，方便查找   不同python版本兼容   使用six模块，如cpickle模块，python3中合并为pickle，导入包from six.moves import cpickle as pickle   获取python版本   使用platform包，版本为：platform.python_version_tuple()   获取文件名   os.path.basen">
   
   
     <link rel="icon" href="/assets/img/favicon.jpg">
@@ -157,60 +158,302 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/10/ubuntu16-04卡在登录循环/" class="archive-article-date">
-  	<time datetime="2018-04-10T06:58:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/10/ubuntu16-04卡在登录循环/">ubuntu16.04卡在登录循环</a>
+    <h1 class="article-title" itemprop="name">
+      python笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/07/13/python笔记/" class="archive-article-date">
+  	<time datetime="2018-07-13T03:17:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>python学习笔记，方便查找</p>
+</blockquote>
+<ul>
+<li><strong>不同python版本兼容</strong></li>
+</ul>
+<blockquote>
+<p>使用<a href="http://six.readthedocs.io/" target="_blank" rel="noopener">six</a>模块，如cpickle模块，python3中合并为pickle，导入包<code>from six.moves import cpickle as pickle</code></p>
+</blockquote>
+<ul>
+<li><strong>获取python版本</strong></li>
+</ul>
+<blockquote>
+<p>使用<code>platform</code>包，版本为：platform.python_version_tuple()</p>
+</blockquote>
+<ul>
+<li><strong>获取文件名</strong></li>
+</ul>
+<blockquote>
+<p>os.path.basename(sys.argv[0])，返回路径拆分的tail名称，如：/home/temp/temp.py, 获得的是temp.py</p>
+</blockquote>
+<ul>
+<li><strong>logging的用法</strong></li>
+</ul>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os.<span class="built_in">path</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    program = os.<span class="built_in">path</span>.basename(sys.argv[<span class="number">0</span>])</span><br><span class="line">    logger = logging.getLogger(program)</span><br><span class="line">    logging.basicConfig(format=<span class="string">'%(asctime)s: %(levelname)s: %(message)s'</span>)</span><br><span class="line">    logging.root.setLevel(level=logging.INFO)</span><br><span class="line">    logger.info(<span class="string">"running %s"</span> % <span class="string">' '</span>.join(sys.argv))</span><br><span class="line">	</span><br><span class="line">	 logger.info(<span class="string">"use info to print info"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>print函数不换行</strong></p>
+<blockquote>
+<p>print函数不换行， end=’’”</p>
+</blockquote>
+</li>
+<li><p><strong>map函数</strong></p>
+<blockquote>
+<p>map函数进行映射，map(str,a)将a里面的元素转化为str类型</p>
+</blockquote>
+</li>
+<li><p><strong>list.copy为浅拷贝</strong></p>
+<blockquote>
+<p> list.copy为浅拷贝，list.copy() – Return a shallow copy of the list. Equivalent to a[:].</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>number包</strong></p>
+<blockquote>
+<p>numbers包为数字包，判断一个变量是否为整数，isinstance(o, numbers.Intergral)，是否为数字isinstance(o, numbers.Number)</p>
+</blockquote>
+</li>
+<li><p><strong>isinstance</strong></p>
+<blockquote>
+<p>isinstance判断一个对象是否为某个类型，与type()不同的是，isinstance考虑了类的继承关系</p>
+</blockquote>
+</li>
+<li><p><strong>str()与repr(）的区别</strong></p>
+<blockquote>
+<p>str是转化为人类可读，repr是转化为机器可读的字符串类型</p>
+</blockquote>
+</li>
+<li><p><strong>下划线开头</strong></p>
+<blockquote>
+<p>函数前单下划线表示私有</p>
+</blockquote>
+</li>
+<li><p><strong>字典get用法</strong></p>
+</li>
+<li><blockquote>
+<p>dictionary.get(“key”, N)，有key则返回key对应的value否者返回N</p>
+</blockquote>
+</li>
+<li><p><strong>字典排序</strong></p>
+<blockquote>
+<p>对字典进行排序，sorted函数，根据value进行排序sotred(dict, key= lambda x:dict[x], reverse=True)</p>
+</blockquote>
+</li>
+<li><strong>字典修改</strong><blockquote>
+<p>{}.fromkeys(key, value)，key和value可以使值或者列表，列表快速构建词典</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>拼接变量与字符串</strong></p>
+<blockquote>
+<p><code>&#39;data_batch_%d&#39; % num</code> 或 <code>&#39;data_batch_{}&#39;.fomat(b)</code></p>
+</blockquote>
+</li>
+<li><p><strong>去除html标签</strong></p>
+<blockquote>
+<p>bs4包的BeautifulSoup, bs4.BeautifulSoup(text, ‘html.parser’).get_text()</p>
+</blockquote>
+</li>
+<li><p><strong>正则表达式替换</strong></p>
+<blockquote>
+<p>text = re.sub(r’[^a-zA-Z]’, ‘ ‘, raw_text)，非字母全部替换</p>
+</blockquote>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢请我吃糖，我跟你其实只有一个微信的距离！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">学习笔记-ubuntu</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">学习笔记-Python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://www.jame-zhang.top/2018/07/13/python笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/07/18/nlp笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          nlp笔记
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/07/06/anaconda-批量安装环境包/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">anaconda 批量安装环境包</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMjg3OS85NDQw">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
 
 
           </div>
@@ -236,9 +479,9 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

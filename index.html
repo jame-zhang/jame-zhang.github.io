@@ -324,6 +324,331 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-nlp笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/18/nlp笔记/">nlp笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/18/nlp笔记/" class="archive-article-date">
+  	<time datetime="2018-07-18T07:57:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h1><blockquote>
+<p>总结NLP相关知识</p>
+</blockquote>
+<h1 id="关于词向量"><a href="#关于词向量" class="headerlink" title="关于词向量"></a>关于词向量</h1><p>在说词向量之前，先说一下机器学习，其实不管是深度学习也好，还是传统的机器学习方法，包括SVM, 决策树，逻辑回归，线性回归等，都是一种数据驱动的学习优化算法，所以最核心的地方就是<code>数据驱动</code>，通过数据进行<code>学习</code>，在能够完整地定义出</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">学习笔记-nlp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/18/nlp笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
+    <article id="post-python笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/13/python笔记/">python笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/13/python笔记/" class="archive-article-date">
+  	<time datetime="2018-07-13T03:17:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>python学习笔记，方便查找</p>
+</blockquote>
+<ul>
+<li><strong>不同python版本兼容</strong></li>
+</ul>
+<blockquote>
+<p>使用<a href="http://six.readthedocs.io/" target="_blank" rel="noopener">six</a>模块，如cpickle模块，python3中合并为pickle，导入包<code>from six.moves import cpickle as pickle</code></p>
+</blockquote>
+<ul>
+<li><strong>获取python版本</strong></li>
+</ul>
+<blockquote>
+<p>使用<code>platform</code>包，版本为：platform.python_version_tuple()</p>
+</blockquote>
+<ul>
+<li><strong>获取文件名</strong></li>
+</ul>
+<blockquote>
+<p>os.path.basename(sys.argv[0])，返回路径拆分的tail名称，如：/home/temp/temp.py, 获得的是temp.py</p>
+</blockquote>
+<ul>
+<li><strong>logging的用法</strong></li>
+</ul>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os.<span class="built_in">path</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    program = os.<span class="built_in">path</span>.basename(sys.argv[<span class="number">0</span>])</span><br><span class="line">    logger = logging.getLogger(program)</span><br><span class="line">    logging.basicConfig(format=<span class="string">'%(asctime)s: %(levelname)s: %(message)s'</span>)</span><br><span class="line">    logging.root.setLevel(level=logging.INFO)</span><br><span class="line">    logger.info(<span class="string">"running %s"</span> % <span class="string">' '</span>.join(sys.argv))</span><br><span class="line">	</span><br><span class="line">	 logger.info(<span class="string">"use info to print info"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>print函数不换行</strong></p>
+<blockquote>
+<p>print函数不换行， end=’’”</p>
+</blockquote>
+</li>
+<li><p><strong>map函数</strong></p>
+<blockquote>
+<p>map函数进行映射，map(str,a)将a里面的元素转化为str类型</p>
+</blockquote>
+</li>
+<li><p><strong>list.copy为浅拷贝</strong></p>
+<blockquote>
+<p> list.copy为浅拷贝，list.copy() – Return a shallow copy of the list. Equivalent to a[:].</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>number包</strong></p>
+<blockquote>
+<p>numbers包为数字包，判断一个变量是否为整数，isinstance(o, numbers.Intergral)，是否为数字isinstance(o, numbers.Number)</p>
+</blockquote>
+</li>
+<li><p><strong>isinstance</strong></p>
+<blockquote>
+<p>isinstance判断一个对象是否为某个类型，与type()不同的是，isinstance考虑了类的继承关系</p>
+</blockquote>
+</li>
+<li><p><strong>str()与repr(）的区别</strong></p>
+<blockquote>
+<p>str是转化为人类可读，repr是转化为机器可读的字符串类型</p>
+</blockquote>
+</li>
+<li><p><strong>下划线开头</strong></p>
+<blockquote>
+<p>函数前单下划线表示私有</p>
+</blockquote>
+</li>
+<li><p><strong>字典get用法</strong></p>
+</li>
+<li><blockquote>
+<p>dictionary.get(“key”, N)，有key则返回key对应的value否者返回N</p>
+</blockquote>
+</li>
+<li><p><strong>字典排序</strong></p>
+<blockquote>
+<p>对字典进行排序，sorted函数，根据value进行排序sotred(dict, key= lambda x:dict[x], reverse=True)</p>
+</blockquote>
+</li>
+<li><strong>字典修改</strong><blockquote>
+<p>{}.fromkeys(key, value)，key和value可以使值或者列表，列表快速构建词典</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>拼接变量与字符串</strong></p>
+<blockquote>
+<p><code>&#39;data_batch_%d&#39; % num</code> 或 <code>&#39;data_batch_{}&#39;.fomat(b)</code></p>
+</blockquote>
+</li>
+<li><p><strong>去除html标签</strong></p>
+<blockquote>
+<p>bs4包的BeautifulSoup, bs4.BeautifulSoup(text, ‘html.parser’).get_text()</p>
+</blockquote>
+</li>
+<li><p><strong>正则表达式替换</strong></p>
+<blockquote>
+<p>text = re.sub(r’[^a-zA-Z]’, ‘ ‘, raw_text)，非字母全部替换</p>
+</blockquote>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">学习笔记-Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/13/python笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
+    <article id="post-anaconda-批量安装环境包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/06/anaconda-批量安装环境包/">anaconda 批量安装环境包</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/06/anaconda-批量安装环境包/" class="archive-article-date">
+  	<time datetime="2018-07-06T07:19:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="pip安装批量的环境包"><a href="#pip安装批量的环境包" class="headerlink" title="pip安装批量的环境包"></a>pip安装批量的环境包</h2><p>首先依赖环境文件如下，<code>requirements.txt</code>,内容如下</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Cython</span>==0.23.4</span><br><span class="line"><span class="attribute">Jinja2</span>==2.8</span><br><span class="line"><span class="attribute">MarkupSafe</span>==0.23</span><br><span class="line"><span class="attribute">Pillow</span>==3.0.0</span><br><span class="line"><span class="attribute">Pygments</span>==2.0.2</span><br><span class="line"><span class="attribute">appnope</span>==0.1.0</span><br><span class="line"><span class="attribute">argparse</span>==1.2.1</span><br><span class="line"><span class="attribute">backports-abc</span>==0.4</span><br><span class="line">backports.<span class="attribute">ssl-match-hostname</span>==3.5.0.1</span><br><span class="line"><span class="attribute">certifi</span>==2015.11.20.1</span><br><span class="line"><span class="attribute">cycler</span>==0.10.0</span><br><span class="line"><span class="attribute">decorator</span>==4.0.6</span><br><span class="line"><span class="attribute">future</span>==0.16.0</span><br><span class="line"><span class="attribute">gnureadline</span>==6.3.3</span><br><span class="line"><span class="attribute">ipykernel</span>==4.2.2</span><br><span class="line"><span class="attribute">ipython</span>==4.0.1</span><br><span class="line"><span class="attribute">ipython-genutils</span>==0.1.0</span><br><span class="line"><span class="attribute">ipywidgets</span>==4.1.1</span><br><span class="line"><span class="attribute">jsonschema</span>==2.5.1</span><br><span class="line"><span class="attribute">jupyter</span>==1.0.0</span><br><span class="line"><span class="attribute">jupyter-client</span>==4.1.1</span><br><span class="line"><span class="attribute">jupyter-console</span>==4.0.3</span><br><span class="line"><span class="attribute">jupyter-core</span>==4.0.6</span><br><span class="line"><span class="attribute">matplotlib</span>==2.0.0</span><br><span class="line"><span class="attribute">mistune</span>==0.7.1</span><br><span class="line"><span class="attribute">nbconvert</span>==4.1.0</span><br><span class="line"><span class="attribute">nbformat</span>==4.0.1</span><br><span class="line"><span class="attribute">notebook</span>==4.0.6</span><br><span class="line"><span class="attribute">numpy</span>==1.10.4</span><br><span class="line">path.<span class="attribute">py</span>==8.1.2</span><br><span class="line"><span class="attribute">pexpect</span>==4.0.1</span><br><span class="line"><span class="attribute">pickleshare</span>==0.5</span><br><span class="line"><span class="attribute">ptyprocess</span>==0.5</span><br><span class="line"><span class="attribute">pyparsing</span>==2.0.7</span><br><span class="line"><span class="attribute">python-dateutil</span>==2.4.2</span><br><span class="line"><span class="attribute">pytz</span>==2015.7</span><br><span class="line"><span class="attribute">pyzmq</span>==15.1.0</span><br><span class="line"><span class="attribute">qtconsole</span>==4.1.1</span><br><span class="line"><span class="attribute">scipy</span>==0.16.1</span><br><span class="line"><span class="attribute">simplegeneric</span>==0.8.1</span><br><span class="line"><span class="attribute">singledispatch</span>==3.4.0.3</span><br><span class="line"><span class="attribute">sites</span>==0.0.1</span><br><span class="line"><span class="attribute">six</span>==1.10.0</span><br><span class="line"><span class="attribute">terminado</span>==0.5</span><br><span class="line"><span class="attribute">tornado</span>==4.3</span><br><span class="line"><span class="attribute">traitlets</span>==4.0.0</span><br></pre></td></tr></table></figure>
+<p>运行命令：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> -r requirements.txt</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具-anaconda</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/06/anaconda-批量安装环境包/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+  
     <article id="post-vim" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -594,260 +919,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-pandas入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/03/pandas入门/">pandas入门</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/03/pandas入门/" class="archive-article-date">
-  	<time datetime="2018-05-03T02:29:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>参加<a href="http://algo.qq.com/" target="_blank" rel="noopener">腾讯广告算法大赛</a>，学习pandas使用</p>
-</blockquote>
-<h1 id="学习的材料："><a href="#学习的材料：" class="headerlink" title="学习的材料："></a>学习的材料：</h1><ul>
-<li>直接搜索(各种博客和网站)</li>
-<li>腾讯广告算法大赛数据操作</li>
-</ul>
-<h1 id="常见操作"><a href="#常见操作" class="headerlink" title="常见操作"></a>常见操作</h1><ul>
-<li><strong>导入包并读取csv文件</strong><br>函数：<code>pd.read_csv(path)</code></li>
-</ul>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">'../datasets/train.csv'</span>) #读取后的格式为DataFrame</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/05/03/pandas入门/#more">More >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据比赛 - Pandas入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/03/pandas入门/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-What-Do-We-Understand-About-Convolutional-Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/">What Do We Understand About Convolutional Networks?</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/" class="archive-article-date">
-  	<time datetime="2018-04-17T11:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>卷积神经元网络综述译文，原文共有94页，看论文的时候翻译出来，记录下。<br>原文地址: <a href="https://arxiv.org/abs/1803.08834" target="_blank" rel="noopener">arxiv</a></p>
-</blockquote>
-<div style="font-size:30px;margin-top:30px" align="center">关于卷积神经元网络我们了解什么</div>
-
-
-<blockquote>
-<p>作者：Isma Hadji and Richard P. Wildes, Department of Electrical Engineering and Computer Science, York University,Toronto, Ontario,Canada.</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/#more">More >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">论文-卷积神经元网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/17/What-Do-We-Understand-About-Convolutional-Networks/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
-    <article id="post-Linux命令记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/Linux命令记录/">Linux命令记录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/11/Linux命令记录/" class="archive-article-date">
-  	<time datetime="2018-04-11T02:45:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>命令记录，方便自己查找</p>
-</blockquote>
-<ol>
-<li>修改主机名<br><code>ubuntu: 修改/etc/hostname</code></li>
-<li>修改ssh配置<br><code>etc/ssh/ssh_config</code><br><code>etc/ssh/sshd_config</code></li>
-<li>查看端口占用<br><code>netstat -tunlp |grep 80</code></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">工具-Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/11/Linux命令记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -964,10 +1035,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
@@ -976,11 +1043,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">工具-anaconda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">学习笔记-nlp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -992,11 +1075,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-VIM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1004,11 +1087,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+                <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1016,11 +1099,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">大数据比赛</a>
+                <a href="javascript:void(0)" class="js-tag color4">HIFI耳机相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HIFI耳机相关</a>
+                <a href="javascript:void(0)" class="js-tag color1">大数据比赛</a>
               </li>
             
             <div class="clearfix"></div>
