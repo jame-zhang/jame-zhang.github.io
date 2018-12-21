@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.jame-zhang.top/2018/07/13/python笔记/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="python学习笔记，方便查找   不同python版本兼容   使用six模块，如cpickle模块，python3中合并为pickle，导入包from six.moves import cpickle as pickle   获取python版本   使用platform包，版本为：platform.python_version_tuple()">
-<meta property="og:updated_time" content="2018-08-02T02:31:35.081Z">
+<meta property="og:updated_time" content="2018-12-06T15:00:37.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python笔记">
 <meta name="twitter:description" content="python学习笔记，方便查找   不同python版本兼容   使用six模块，如cpickle模块，python3中合并为pickle，导入包from six.moves import cpickle as pickle   获取python版本   使用platform包，版本为：platform.python_version_tuple()">
@@ -250,7 +250,7 @@ ga('send', 'pageview');
 </li>
 <li><p><strong>字典排序</strong></p>
 <blockquote>
-<p>对字典进行排序，sorted函数，根据value进行排序sotred(dict, key= lambda x:dict[x], reverse=True)</p>
+<p>对字典进行排序，sorted函数，根据value进行排序sotred(dict, key= lambda x:dict[x], reverse=True)<br>使用collections.OrderedDict(dic.items())</p>
 </blockquote>
 </li>
 <li><strong>字典修改</strong><blockquote>
@@ -259,11 +259,12 @@ ga('send', 'pageview');
 </li>
 </ul>
 <ul>
-<li><p><strong>拼接变量与字符串</strong></p>
-<blockquote>
-<p><code>&#39;data_batch_%d&#39; % num</code> 或 <code>&#39;data_batch_{}&#39;.format(b)</code></p>
+<li><strong>拼接变量与字符串</strong><blockquote>
+<p><code>&#39;data_batch_%d&#39; % num</code> 或 <code>&#39;data_batch_{}&#39;.format(b)</code><br><code>print(&#39;hello %(first)s and %(second)s&#39; % {&#39;first&#39;: &#39;df&#39;, &#39;second&#39;: &#39;another df&#39;})</code></p>
 </blockquote>
 </li>
+</ul>
+<ul>
 <li><p><strong>去除html标签</strong></p>
 <blockquote>
 <p>bs4包的BeautifulSoup, bs4.BeautifulSoup(text, ‘html.parser’).get_text()</p>
@@ -297,6 +298,16 @@ ga('send', 'pageview');
 <li><p><strong>批量安装依赖</strong></p>
 <blockquote>
 <p>pip install -r requirement.txt<br>requirement.txt中一行一个包和版本号,<code>Cython==0.23.4</code></p>
+</blockquote>
+</li>
+<li><p><strong>转化为二进制</strong></p>
+<blockquote>
+<p>bin(x)<br>{0:b}.format(x)</p>
+</blockquote>
+</li>
+<li><p><strong>*args和\</strong>kwargs的作用**</p>
+<blockquote>
+<p>*args表示的是传递不定数量的参数，而**kwargs表示的是keyword arguments，表示的是不定数量的a=1这样的关键字的参数。<a href="https://python.freelycode.com/contribution/detail/427" target="_blank" rel="noopener">例子</a></p>
 </blockquote>
 </li>
 </ul>
@@ -414,11 +425,11 @@ ga('send', 'pageview');
   
 <nav id="article-nav">
   
-    <a href="/2018/07/18/nlp笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/05/macos ios启动盘制作/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          nlp笔记
+          ios启动盘制作
         
       </div>
     </a>
@@ -571,15 +582,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">学习笔记-nlp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">论文, 目标检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">置顶</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">工具-Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,6 +614,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
@@ -599,23 +626,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">硬件学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-anaconda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">学习笔记-nlp</a>
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,7 +634,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据比赛 - Pandas入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">工具-anaconda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,10 +675,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">大数据比赛</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">置顶</a>
               </li>
              
               <li class="article-tag-list-item">
