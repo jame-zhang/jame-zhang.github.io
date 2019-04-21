@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://www.jame-zhang.top">
+  <link rel="dns-prefetch" href="https://blog.jame-zhang.top">
   <title>用树莓派搭建你自己的ngrok服务器 | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这几天研究ngrok的使用，用谷歌的vps测试了下，发现一起正常，然后突然想到，树莓派能运行服务器端或者运行客户端呢，答案是肯定的  搭建的探索进程按照编译的标准流程刚开始想着按照标准的编译流程在树莓派安装环境（go、git、其他依赖），结果失败。 首先go语言arm架构的软件包需要自己编译，手上的树莓派型号是：树莓派3 B型的机器，架构是armv7，然后到go语言官网只找到了armv6的软件，">
 <meta name="keywords" content="工具-ngrok">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用树莓派搭建你自己的ngrok服务器">
-<meta property="og:url" content="https://www.jame-zhang.top/2018/04/08/用树莓派搭建你自己的ngrok服务器/index.html">
+<meta property="og:url" content="https://blog.jame-zhang.top/2018/04/08/用树莓派搭建你自己的ngrok服务器/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="这几天研究ngrok的使用，用谷歌的vps测试了下，发现一起正常，然后突然想到，树莓派能运行服务器端或者运行客户端呢，答案是肯定的  搭建的探索进程按照编译的标准流程刚开始想着按照标准的编译流程在树莓派安装环境（go、git、其他依赖），结果失败。 首先go语言arm架构的软件包需要自己编译，手上的树莓派型号是：树莓派3 B型的机器，架构是armv7，然后到go语言官网只找到了armv6的软件，">
-<meta property="og:image" content="https://www.jame-zhang.top/assets/pie-ngrok.png">
-<meta property="og:image" content="https://www.jame-zhang.top/assets/pie-docker-error.png">
+<meta property="og:image" content="https://blog.jame-zhang.top/assets/pie-ngrok.png">
+<meta property="og:image" content="https://blog.jame-zhang.top/assets/pie-docker-error.png">
 <meta property="og:updated_time" content="2018-04-10T12:47:07.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用树莓派搭建你自己的ngrok服务器">
 <meta name="twitter:description" content="这几天研究ngrok的使用，用谷歌的vps测试了下，发现一起正常，然后突然想到，树莓派能运行服务器端或者运行客户端呢，答案是肯定的  搭建的探索进程按照编译的标准流程刚开始想着按照标准的编译流程在树莓派安装环境（go、git、其他依赖），结果失败。 首先go语言arm架构的软件包需要自己编译，手上的树莓派型号是：树莓派3 B型的机器，架构是armv7，然后到go语言官网只找到了armv6的软件，">
-<meta name="twitter:image" content="https://www.jame-zhang.top/assets/pie-ngrok.png">
+<meta name="twitter:image" content="https://blog.jame-zhang.top/assets/pie-ngrok.png">
   
   
     <link rel="icon" href="/assets/img/favicon.jpg">
@@ -196,7 +196,7 @@ ga('send', 'pageview');
 <p>更新软件的时候都失败，看来是arm架构的软件源镜像没人管了，毕竟用的人那么少，只有闲的蛋疼的才会这么做（比如我😂😂），who cares，所以这个方法失败。<br><img src="/assets/pie-docker-error.png" alt=""></p>
 <h3 id="思考了一下发现解决办法（做事情，思考很重要呀）"><a href="#思考了一下发现解决办法（做事情，思考很重要呀）" class="headerlink" title="思考了一下发现解决办法（做事情，思考很重要呀）"></a>思考了一下发现解决办法（做事情，思考很重要呀）</h3><p>　　试了👆的两个方法失败后，冷静地思考了下，发现编译的时候不是会传递架构的参数吗？<code>GOOS=linux GOARCH=amd64 make release-server</code>，而且客户端和服务器认证的时候是通过证书的，所以我只要生成树莓派的证书，然后复制到ngrok的源码里面不就成了吗？结果 –&gt; 成功。<br>所以把ngrok部署在树莓派（可以把树莓派当服务器，或者使用客户端）的办法就是：</p>
 <ul>
-<li>找一台正常环境的centos，安装好编译环境（具体参考<a href="http://www.jame-zhang.top/2018/04/05/ngrok%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/">ngrok服务器搭建</a>的文章）</li>
+<li>找一台正常环境的centos，安装好编译环境（具体参考<a href="http://www.jame-zhang.top/2018/04/05/ngrok%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/" target="_blank" rel="noopener">ngrok服务器搭建</a>的文章）</li>
 <li><p>然后在你的<strong>树莓派上生成证书</strong>，<strong>拷贝到编译用的centos</strong>，生成证书的代码是：</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out rootCA<span class="selector-class">.key</span> <span class="number">2048</span></span><br><span class="line">openssl req -x509 -new -nodes -key rootCA<span class="selector-class">.key</span> -subj <span class="string">"/CN=$NGROK_DOMAIN"</span> -days <span class="number">5000</span> -out rootCA.pem</span><br><span class="line">openssl genrsa -out server<span class="selector-class">.key</span> <span class="number">2048</span></span><br><span class="line">openssl req -new -key server<span class="selector-class">.key</span> -subj <span class="string">"/CN=$NGROK_DOMAIN"</span> -out server.csr</span><br><span class="line">openssl x509 -req -<span class="keyword">in</span> server<span class="selector-class">.csr</span> -CA rootCA<span class="selector-class">.pem</span> -CAkey rootCA<span class="selector-class">.key</span> -CAcreateserial -out server<span class="selector-class">.crt</span> -days <span class="number">5000</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -308,7 +308,7 @@ ga('send', 'pageview');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://www.jame-zhang.top/2018/04/08/用树莓派搭建你自己的ngrok服务器/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://blog.jame-zhang.top/2018/04/08/用树莓派搭建你自己的ngrok服务器/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -397,7 +397,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Jame-Zhang
+    		&copy; 2019 Jame-Zhang
     	</div>
       <span id="busuanzi_container_site_uv"> 
         本站访客数<span id="busuanzi_value_site_uv"></span>人次
@@ -491,7 +491,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具-Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,7 +499,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具-Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,11 +519,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-anaconda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,11 +527,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,15 +539,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-anaconda</a>
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,11 +555,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -5,17 +5,17 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://www.jame-zhang.top">
+  <link rel="dns-prefetch" href="https://blog.jame-zhang.top">
   <title>Nginx的使用 | Jame-Zhang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="默认目录 /var/www/html /usr/share/nginx/html">
 <meta name="keywords" content="工具-nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx的使用">
-<meta property="og:url" content="https://www.jame-zhang.top/2018/04/06/Nginx的使用/index.html">
+<meta property="og:url" content="https://blog.jame-zhang.top/2018/04/06/Nginx的使用/index.html">
 <meta property="og:site_name" content="Jame-Zhang的博客">
 <meta property="og:description" content="默认目录 /var/www/html /usr/share/nginx/html">
-<meta property="og:updated_time" content="2018-07-04T05:16:28.322Z">
+<meta property="og:updated_time" content="2018-12-31T05:48:34.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx的使用">
 <meta name="twitter:description" content="默认目录 /var/www/html /usr/share/nginx/html">
@@ -184,13 +184,18 @@ ga('send', 'pageview');
 </ul>
 <a id="more"></a>
 <h2 id="配置站点跳转"><a href="#配置站点跳转" class="headerlink" title="配置站点跳转"></a>配置站点跳转</h2><ol>
-<li><p>jame-zhang 跳转到 <a href="http://www.jame-zhang.top">www.jame-zhang.top</a></p>
+<li><p>jame-zhang 跳转到 <a href="http://www.jame-zhang.top" target="_blank" rel="noopener">www.jame-zhang.top</a></p>
 <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">        <span class="attribute">listen 80;</span></span><br><span class="line"><span class="attribute">        server_name jame-zhang.top;</span></span><br><span class="line"><span class="attribute">        return 301 https</span>://www<span class="variable">.jame-zhang</span><span class="variable">.top</span>$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>http跳转到https</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">        <span class="attribute">server_name</span> www.jame-zhang.top;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">        <span class="attribute">server_name</span> www.jame-zhang.top;</span><br><span class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span>  https://<span class="variable">$host</span><span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>##　配置多个站点和端口</p>
+<blockquote>
+<p>编辑<code>/etc/nginx/site-enabled/default</code>文件，添加如下代码</p>
+</blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> 自定义端口;</span><br><span class="line">        <span class="attribute">listen</span> [::]:自定义端口;</span><br><span class="line">        <span class="attribute">server_name</span> www.jame-zhang.top;</span><br><span class="line">        <span class="attribute">root</span> 自定义站点路径; <span class="comment">#注意路径最后应该以 /(斜杠) 结尾，否者路径会出错，回到默认站点路径去了</span></span><br><span class="line">        <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">        <span class="comment">#location 配置的是访问的地址</span></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">        		<span class="attribute">root</span> html;</span><br><span class="line">        		<span class="attribute">index</span> html.index</span><br><span class="line">        		</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>　　Nginx不仅可以作为一个Web服务器或反向代理服务器，还可以按照权重、轮询、ip hash、URL hash等多种方式对后端服务器的负载均衡
 　　</p>
 <h3 id="什么是负载均衡"><a href="#什么是负载均衡" class="headerlink" title="什么是负载均衡"></a>什么是负载均衡</h3><p>　　负债均衡(load balance)就是将负载分摊到多个操作单元上执行，从而提高服务的可用性和响应速度，带来更好的体验。</p>
@@ -336,7 +341,7 @@ ga('send', 'pageview');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://www.jame-zhang.top/2018/04/06/Nginx的使用/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://blog.jame-zhang.top/2018/04/06/Nginx的使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -425,7 +430,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Jame-Zhang
+    		&copy; 2019 Jame-Zhang
     	</div>
       <span id="busuanzi_container_site_uv"> 
         本站访客数<span id="busuanzi_value_site_uv"></span>人次
@@ -519,7 +524,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具-Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,7 +532,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hexo博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具-Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,11 +552,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-anaconda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +560,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
+                <a href="javascript:void(0)" class="js-tag color5">工具-Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,15 +572,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-anaconda</a>
+                <a href="javascript:void(0)" class="js-tag color1">论文-卷积神经元网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+                <a href="javascript:void(0)" class="js-tag color4">工具-ngrok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,11 +588,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
+                <a href="javascript:void(0)" class="js-tag color2">工具-SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">学习笔记-ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">工具-软件、网站推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具-网站分享</a>
               </li>
              
               <li class="article-tag-list-item">
